@@ -1,0 +1,96 @@
+[bar/bar]
+modules-left = workspaces
+modules-center = date
+modules-right = alsa battery
+fixed-center = true
+module-margin-left = 1
+module-margin-right = 1
+padding-left = 2
+padding-right = 2
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = Terminus:size=12
+font-1 = Symbola:size=10
+
+width = 100%
+height = 30
+bottom = true
+offset-x = 0
+offset-y = 0
+
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color8:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[module/date]
+type = internal/date
+date = %T
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-charging = 🔌 %percentage%%
+label-discharging = %percentage%%
+
+[module/alsa]
+type = internal/alsa
+format-volume = <ramp-volume> <bar-volume>
+label-volume-foreground = ${colors.foreground}
+label-muted-foreground = ${colors.foreground}
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+label-muted = 🔇 ─────────
+bar-volume-width = 10
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 0
+bar-volume-fill = ─
+bar-volume-fill-font = 0
+bar-volume-fill-foreground = ${colors.primary}
+bar-volume-empty = ─
+bar-volume-empty-font = 0
+bar-volume-empty-foreground = ${colors.foreground}
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = false
+icon-0 = 1;!
+icon-1 = 2;@
+icon-2 = 3;#
+icon-3 = 4;$
+icon-4 = 5;%
+icon-5 = 6;^
+icon-6 = 7;&
+icon-7 = 8;*
+icon-8 = 9;(
+icon-9 = 10;)
+icon-default = .
+format = <label-state>
+label-monitor = %icon%
+label-active = %icon%
+label-occupied = %icon%
+label-urgent = %icon%
+label-empty = %icon%
+label-occupied-padding = 1
+label-empty-padding = 1
+label-urgent-padding = 1
+label-active-padding = 1
+label-active-foreground = ${colors.foreground}
+label-active-background = ${colors.primary}
+label-active-underline = ${colors.foreground}
+label-occupied-underline = ${colors.foreground}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-underline = ${colors.foreground}
+label-empty-foreground = ${colors.foreground}

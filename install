@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DOTPATH=~/dots
+
+for f in .??*
+do
+    case $f in
+        ".git"|".gitignore")
+            ;;
+        *)
+            ln -snfv $DOTPATH/$f $HOME/$f
+            ;;
+    esac
+done
+
+cp -rT ./config/ ~/.config/

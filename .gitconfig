@@ -1,0 +1,35 @@
+[user]
+	name = Takumi Ando
+	email = takumi@t15.ch
+[core]
+	editor = vim
+[push]
+	default = matching
+[color "diff-highlight"]
+	oldNormal = magenta bold
+	oldHighlight = magenta bold 54
+	newNormal = blue bold
+	newHighlight = blue bold 24
+[color "status"]
+	added = blue bold
+	changed = magenta bold
+	untracked = cyan bold
+[color "diff"]
+	meta = white bold
+	frag = black yellow
+	old = magenta bold
+	new = blue bold
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = true
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[log]
+	decorate = auto
+[credential]
+	helper = store
+[includeIf "gitdir:~/Work/"]
+	path = ~/.gitconfig-work
