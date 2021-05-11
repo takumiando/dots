@@ -7,12 +7,9 @@ module-margin-left = 1
 module-margin-right = 1
 padding-left = 2
 padding-right = 2
-
 background = ${colors.background}
 foreground = ${colors.foreground}
 font-0 = Terminus:size=12
-font-1 = Symbola:size=10
-
 width = 100%
 height = 30
 bottom = true
@@ -38,28 +35,16 @@ adapter = AC
 full-at = 100
 format-charging = <label-charging>
 format-discharging = <label-discharging>
-label-charging = 🔌 %percentage%%
-label-discharging = %percentage%%
+label-charging = CHARGING %percentage%%
+label-discharging = BAT %percentage%%
 
 [module/alsa]
 type = internal/alsa
-format-volume = <ramp-volume> <bar-volume>
+format-volume = <label-volume>
 label-volume-foreground = ${colors.foreground}
 label-muted-foreground = ${colors.foreground}
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-label-muted = 🔇 ─────────
-bar-volume-width = 10
-bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-font = 0
-bar-volume-fill = ─
-bar-volume-fill-font = 0
-bar-volume-fill-foreground = ${colors.primary}
-bar-volume-empty = ─
-bar-volume-empty-font = 0
-bar-volume-empty-foreground = ${colors.foreground}
+label-volume = VOL %percentage%%
+label-muted = VOL MUTED
 
 [module/workspaces]
 type = internal/xworkspaces
