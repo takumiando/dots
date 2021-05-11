@@ -20,6 +20,11 @@ picom -bc --config ~/.picom.conf
 # Start file manager as a daemon
 thunar --daemon &
 
+# Apply screen layouts
+if [ -f ~/.screen ]; then
+    sh ~/.screen
+fi
+
 # Set wallpaper and color scheme
 wal -qR &
 
