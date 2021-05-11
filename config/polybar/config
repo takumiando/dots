@@ -35,8 +35,10 @@ adapter = AC
 full-at = 100
 format-charging = <label-charging>
 format-discharging = <label-discharging>
-label-charging = CHARGING %percentage%%
+label-full = BAT %percentage%%
 label-discharging = BAT %percentage%%
+label-charging = CHARGING %percentage%%
+poll-interval = 2
 
 [module/alsa]
 type = internal/alsa
