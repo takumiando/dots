@@ -20,6 +20,9 @@ picom -bc --config ~/.picom.conf
 # Start file manager as a daemon
 thunar --daemon &
 
+# Start batify
+~/bin/batify &
+
 # Apply screen layouts
 if [ -f ~/.screen ]; then
     sh ~/.screen
