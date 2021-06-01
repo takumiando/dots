@@ -186,49 +186,49 @@
     <keybind key="A-Left">
       <action name="GoToDesktop">
         <to>left</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="A-Right">
       <action name="GoToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="A-Up">
       <action name="GoToDesktop">
         <to>up</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="A-Down">
       <action name="GoToDesktop">
         <to>down</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Left">
       <action name="SendToDesktop">
         <to>left</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Right">
       <action name="SendToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Up">
       <action name="SendToDesktop">
         <to>up</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Down">
       <action name="SendToDesktop">
         <to>down</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="A-1">
@@ -525,25 +525,25 @@
       <mousebind button="C-A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="C-A-Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-S-Up" action="Click">
         <action name="SendToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-S-Down" action="Click">
         <action name="SendToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
     </context>
@@ -742,37 +742,37 @@
       <mousebind button="Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="C-A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="C-A-Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="Left" action="Press">
@@ -796,25 +796,25 @@
       <mousebind button="Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
       <mousebind button="A-Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
-          <wrap>no</wrap>
+          <wrap>yes</wrap>
         </action>
       </mousebind>
     </context>
