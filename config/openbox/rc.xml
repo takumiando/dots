@@ -231,6 +231,78 @@
         <wrap>yes</wrap>
       </action>
     </keybind>
+    <keybind key="A-H">
+      <action name="GoToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-L">
+      <action name="GoToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-K">
+      <action name="GoToDesktop">
+        <to>up</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-J">
+      <action name="GoToDesktop">
+        <to>down</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-H">
+      <action name="SendToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-L">
+      <action name="SendToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-K">
+      <action name="SendToDesktop">
+        <to>up</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-J">
+      <action name="SendToDesktop">
+        <to>down</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-O">
+      <action name="GoToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-P">
+      <action name="GoToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-O">
+      <action name="SendToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-P">
+      <action name="SendToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
     <keybind key="A-1">
       <action name="GoToDesktop">
         <to>1</to>
