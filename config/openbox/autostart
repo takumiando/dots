@@ -33,3 +33,6 @@ wal -qR &
 
 # Start polybar
 polybar-wal &
+
+# Start xscreensaver
+xscreensaver --no-splash &

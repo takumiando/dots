@@ -365,11 +365,6 @@
         <action name="Close"/>
       </keybind>
     </keybind>
-    <keybind key="A-Escape">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
-    </keybind>
     <keybind key="A-f">
       <action name="ToggleMaximize"/>
     </keybind>
@@ -531,6 +526,11 @@
     <keybind key="A-C-p">
       <action name="Execute">
         <command>scr w</command>
+      </action>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="Execute">
+        <command>xscreensaver-command --lock</command>
       </action>
     </keybind>
   </keyboard>
