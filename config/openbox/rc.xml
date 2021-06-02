@@ -279,30 +279,6 @@
         <wrap>yes</wrap>
       </action>
     </keybind>
-    <keybind key="A-O">
-      <action name="GoToDesktop">
-        <to>left</to>
-        <wrap>yes</wrap>
-      </action>
-    </keybind>
-    <keybind key="A-P">
-      <action name="GoToDesktop">
-        <to>right</to>
-        <wrap>yes</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-O">
-      <action name="SendToDesktop">
-        <to>left</to>
-        <wrap>yes</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-P">
-      <action name="SendToDesktop">
-        <to>right</to>
-        <wrap>yes</wrap>
-      </action>
-    </keybind>
     <keybind key="A-1">
       <action name="GoToDesktop">
         <to>1</to>
