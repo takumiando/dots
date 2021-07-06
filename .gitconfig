@@ -33,5 +33,16 @@
     decorate = auto
 [credential]
     helper = store
+[alias]
+    l  = log --oneline --decorate
+    re = rebase -i
+    co = checkout
+    mg = merge
+    df = diff
+    cm = commit --signoff -m
+    ca = commit --amend
+    s  = status
+    p  = push
+    cp = cherry-pick
 [includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work
