@@ -72,7 +72,6 @@ local PS1_CHAR='%F{yellow}> %f'
 
 PS1="${PS1_HOST}${PS1_PWD}${PS1_GIT}
 ${PS1_CHAR}"
-PS2='> '
 
 case $(uname) in
 	Darwin)
@@ -99,9 +98,11 @@ alias ag='ag --color-match "39;46" --color-path "1;34" --color-line-number "1;30
 stty stop undef
 
 if [ -z ${SSH_TTY} ]; then
-	if [ ${TERM} = 'st-256color' ] || [ ${TERM} = 'xterm-256color' ]; then
-		if [ -f ${HOME}/.cache/wal/sequences ]; then
-			cat ${HOME}/.cache/wal/sequences
-		fi
-	fi
+    case "$TERM" in
+        "st-256color"|"xterm-256color"|"alacritty")
+		    if [ -f ${HOME}/.cache/wal/sequences ]; then
+			    cat ${HOME}/.cache/wal/sequences
+		    fi
+            ;;
+    esac
 fi

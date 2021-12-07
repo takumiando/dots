@@ -1,6 +1,5 @@
 "" load plug setting
 source ~/.vim-plug
-colorscheme wal
 
 "" tmux setting 
 augroup titlesettings
@@ -61,10 +60,11 @@ augroup fileTypeIndent
 	autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+	autocmd BufNewFile,BufRead "Kconfig" set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
 
 nnoremap <silent> <C-m> :PrevimOpen<CR>
-let g:previm_open_cmd = 'surf'
+let g:previm_open_cmd = 'google-chrome'
 let g:vim_markdown_folding_disabled=1
 au BufRead,BufNewFile *.md set filetype=markdown
