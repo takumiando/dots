@@ -1,0 +1,30 @@
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+
+font:
+  size: 8
+  normal:
+    family: 'Terminus'
+    style: Regular
+  bold:
+    family: 'Terminus'
+    style: Bold
+  italic:
+    family: 'Terminus'
+    style: Italic
+  bold_italic:
+    family: 'Terminus'
+    style: Bold Italic
+
+window:
+  decorations: none
+  startup_mode: Maximized
+  title: Terminal
+  dynamic_title: false
+  padding:
+    x: 30
+    y: 30
+
+background_opacity: 1.00
