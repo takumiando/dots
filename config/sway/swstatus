@@ -1,0 +1,71 @@
+#!/bin/sh
+
+clock () {
+        DATETIME=$(date "+%Y-%m-%d %T")
+        echo -n "$DATETIME"
+}
+
+volume () {
+    LINE=$(amixer sget Master 2> /dev/null | grep "%" | head -n 1 | sed -e 's/\[\|\]//g')
+    VOL=$(echo $LINE |  awk '{print $5}')
+    STATUS=$(echo $LINE |  awk '{print $6}')
+
+    if [ "$STATUS" = "on" ]; then
+        echo -n "$VOL"
+    else
+        echo -n "--%"
+    fi
+}
+
+battery () {
+    BAT=/sys/class/power_supply/BAT0
+
+    if [ ! -e $BAT ]; then
+        exit
+    fi
+
+    CAPACITY=$(cat $BAT/capacity)
+    STATUS=$(cat $BAT/status)
+
+    if [ "$STATUS" = "Discharging" ]; then
+        PICT='|'
+    else
+        PICT='+'
+    fi
+
+    if [ $CAPACITY -eq 100 ]; then
+        PICT_NUM=5
+    else
+        PICT_NUM=$(expr $CAPACITY / 20)
+    fi
+
+    echo -n "["
+    for i in $(seq 1 $PICT_NUM)
+    do
+        echo -n "$PICT"
+    done
+
+    for i in $(seq 1 $(expr 5 - $PICT_NUM))
+    do
+        echo -n " "
+    done
+    echo -n "}"
+
+#    echo -n "$CAPACITY%"
+}
+
+im () {
+    case $(fcitx5-remote) in
+        0 )
+            echo -n "--"
+            ;;
+        1 )
+            echo -n "EN"
+            ;;
+        2 )
+            echo -n "JP"
+            ;;
+    esac
+}
+
+echo $(im) $(battery) $(volume) $(clock)
