@@ -11,18 +11,13 @@ set $menu dmenu_path | dmenu -fn Terminus:pixelsize=12 -nb "$color0" -nf "$color
 
 output * bg $wallpaper fill
 
-### Idle configuration
 #
-# Example configuration:
+# Idle configuration
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 input "type:keyboard" {
     xkb_options ctrl:nocaps
@@ -172,6 +167,8 @@ bindsym Print exec grim ${HOME}/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').pn
 bindsym Shift+Print exec grim -g \"$(slurp)\" ${HOME}/Pictures/screenshots/$(date +'%Y%m%d_%H%M%S').png
 # File Manager
 bindsym $mod+Shift+f exec nautilus -w
+# Lock screen
+bindsym $mod+Escape exec swaylock -f -c 000000
 
 #
 # Status Bar:
