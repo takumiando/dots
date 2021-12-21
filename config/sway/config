@@ -1,5 +1,6 @@
 include ${HOME}/.cache/wal/colors-sway
 
+set $scripts ${HOME}/.config/sway/scripts
 set $mod Mod1
 set $left h
 set $down j
@@ -181,7 +182,7 @@ bar {
     height 30
 
     font Terminus 8
-    status_command while ${HOME}/.config/sway/swstatus; do sleep 0.2; done
+    status_command while $scripts/status; do sleep 0.2; done
 
     tray_output none
 
@@ -212,4 +213,4 @@ client.background       #ffffff
 
 # Include external configs
 include /etc/sway/config.d/*
-
+include "${HOME}/.config/sway/$(cat /etc/hostname).conf"
