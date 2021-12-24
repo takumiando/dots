@@ -77,27 +77,29 @@ bindsym $mod+Shift+Right move right
 # Workspaces:
 #
 # Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+grave workspace main
+bindsym $mod+1 workspace one
+bindsym $mod+2 workspace two
+bindsym $mod+3 workspace three
+bindsym $mod+4 workspace four
+bindsym $mod+5 workspace five
+bindsym $mod+6 workspace six
+bindsym $mod+7 workspace seven
+bindsym $mod+8 workspace eight
+bindsym $mod+9 workspace nine
+bindsym $mod+0 workspace ten
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+grave move container to workspace main
+bindsym $mod+Shift+1 move container to workspace one
+bindsym $mod+Shift+2 move container to workspace two
+bindsym $mod+Shift+3 move container to workspace three
+bindsym $mod+Shift+4 move container to workspace four
+bindsym $mod+Shift+5 move container to workspace five
+bindsym $mod+Shift+6 move container to workspace six
+bindsym $mod+Shift+7 move container to workspace seven
+bindsym $mod+Shift+8 move container to workspace eight
+bindsym $mod+Shift+9 move container to workspace nine
+bindsym $mod+Shift+0 move container to workspace ten
 
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
@@ -175,20 +177,20 @@ bindsym $mod+Escape exec swaylock -f -c 000000
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
     height 30
 
     font Terminus 8
     status_command while $scripts/status; do sleep 0.2; done
 
     tray_output none
-
+    gaps 0 0
     colors {
         statusline $foreground
-        background $background
-        focused_workspace #000000aa #000000aa "$foreground"aa
-        active_workspace $background $background $foreground
-        inactive_workspace $background $background $foreground
+        background "$background"e6
+        focused_workspace "$color3"e6 "$color3"e6 $foreground
+        active_workspace "$background"e6 "$background"e6 $foreground
+        inactive_workspace "$background"e6 "$background"e6 $foreground
     }
 }
 
@@ -202,9 +204,9 @@ gaps outer 0
 default_border pixel 3
 default_floating_border pixel 0
 client.focused          #ffffff #ffffff #000000 #000000 $color3
-client.focused_inactive #ffffff #ffffff #000000 #000000 #000000
-client.unfocused        #ffffff #ffffff #000000 #000000 #000000
-client.urgent           #ffffff #ffffff #000000 #000000 #900000
+client.focused_inactive #ffffff #ffffff #000000 #000000 #00000000
+client.unfocused        #ffffff #ffffff #000000 #000000 #00000000
+client.urgent           #ffffff #ffffff #000000 #000000 #90000000
 client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 client.background       #ffffff
 
