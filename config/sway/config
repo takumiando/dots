@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu dmenu_path | dmenu -fn Terminus:pixelsize=12 -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15" | xargs swaymsg exec --
+set $menu dmenu_path | dmenu -fn Terminus:pixelsize=12 -nb "$background" -nf "$foreground" -sb "$color3" -sf "$foreground" | xargs swaymsg exec --
 
 output * bg $wallpaper fill
 
