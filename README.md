@@ -1,3 +1,3 @@
 # dots
 
-![](img/scrot.png)
+![](img/screenshot.png)
