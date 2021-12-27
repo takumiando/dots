@@ -21,6 +21,8 @@ exec swayidle -w \
 
 input "type:keyboard" {
     xkb_options ctrl:nocaps
+    repeat_delay 500
+    repeat_rate 50
 }
 
 input type:touchpad {
