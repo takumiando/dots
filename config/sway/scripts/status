@@ -13,7 +13,7 @@ volume () {
     if [ "$STATUS" = "on" ]; then
         echo -n "$VOL"
     else
-        echo -n "--%"
+        echo -n "mute"
     fi
 }
 
@@ -65,9 +65,6 @@ battery () {
 
 im () {
     case $(fcitx5-remote) in
-        0 )
-            echo -n "__"
-            ;;
         1 )
             echo -n "en"
             ;;
