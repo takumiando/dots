@@ -66,13 +66,13 @@ battery () {
 im () {
     case $(fcitx5-remote) in
         0 )
-            echo -n "--"
+            echo -n "__"
             ;;
         1 )
-            echo -n "EN"
+            echo -n "en"
             ;;
         2 )
-            echo -n "JP"
+            echo -n "jp"
             ;;
     esac
 }
