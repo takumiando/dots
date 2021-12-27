@@ -35,23 +35,32 @@ battery () {
 
     if [ $CAPACITY -eq 100 ]; then
         PICT_NUM=5
+        PICT_SUB_NUM=0
+        PICT_SPACE_NUM=0
     else
         PICT_NUM=$(expr $CAPACITY / 20)
+        PICT_SUB_NUM=$(expr $CAPACITY % 20 / 10)
+        PICT_SPACE_NUM=$(expr 5 - $PICT_NUM - $PICT_SUB_NUM)
     fi
 
     echo -n "["
-    for i in $(seq 1 $PICT_NUM)
+
+    for i in $(seq $PICT_NUM)
     do
         echo -n "$PICT"
     done
 
-    for i in $(seq 1 $(expr 5 - $PICT_NUM))
+    for i in $(seq $PICT_SUB_NUM)
     do
-        echo -n " "
+        echo -n "."
     done
-    echo -n "}"
 
-#    echo -n "$CAPACITY%"
+    for i in $(seq $PICT_SPACE_NUM)
+    do
+        echo -n "_"
+    done
+
+    echo -n "}"
 }
 
 im () {
