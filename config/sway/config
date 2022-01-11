@@ -79,29 +79,29 @@ bindsym $mod+Shift+Right move right
 # Workspaces:
 #
 # Switch to workspace
-bindsym $mod+grave workspace main
-bindsym $mod+1 workspace one
-bindsym $mod+2 workspace two
-bindsym $mod+3 workspace three
-bindsym $mod+4 workspace four
-bindsym $mod+5 workspace five
-bindsym $mod+6 workspace six
-bindsym $mod+7 workspace seven
-bindsym $mod+8 workspace eight
-bindsym $mod+9 workspace nine
-bindsym $mod+0 workspace ten
+bindsym $mod+1 workspace 1:one
+bindsym $mod+2 workspace 2:two
+bindsym $mod+3 workspace 3:three
+bindsym $mod+4 workspace 4:four
+bindsym $mod+5 workspace 5:five
+bindsym $mod+6 workspace 6:six
+bindsym $mod+7 workspace 7:seven
+bindsym $mod+8 workspace 8:eight
+bindsym $mod+9 workspace 9:nine
+bindsym $mod+0 workspace 10:ten
+bindsym $mod+grave workspace 0:main
 # Move focused container to workspace
-bindsym $mod+Shift+grave move container to workspace main
-bindsym $mod+Shift+1 move container to workspace one
-bindsym $mod+Shift+2 move container to workspace two
-bindsym $mod+Shift+3 move container to workspace three
-bindsym $mod+Shift+4 move container to workspace four
-bindsym $mod+Shift+5 move container to workspace five
-bindsym $mod+Shift+6 move container to workspace six
-bindsym $mod+Shift+7 move container to workspace seven
-bindsym $mod+Shift+8 move container to workspace eight
-bindsym $mod+Shift+9 move container to workspace nine
-bindsym $mod+Shift+0 move container to workspace ten
+bindsym $mod+Shift+1 move container to workspace 1:one
+bindsym $mod+Shift+2 move container to workspace 2:two
+bindsym $mod+Shift+3 move container to workspace 3:three
+bindsym $mod+Shift+4 move container to workspace 4:four
+bindsym $mod+Shift+5 move container to workspace 5:five
+bindsym $mod+Shift+6 move container to workspace 6:six
+bindsym $mod+Shift+7 move container to workspace 7:seven
+bindsym $mod+Shift+8 move container to workspace 8:eight
+bindsym $mod+Shift+9 move container to workspace 9:nine
+bindsym $mod+Shift+0 move container to workspace 10:ten
+bindsym $mod+Shift+grave move container to workspace 0:main
 
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
@@ -185,6 +185,7 @@ bar {
     font Terminus 8
     status_command while $scripts/status; do sleep 0.2; done
 
+    strip_workspace_numbers yes
     tray_output none
     gaps 0 0
     colors {
