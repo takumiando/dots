@@ -155,9 +155,14 @@ bindsym $mod+r mode "resize"
 # Applications
 #
 # Volumes
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-mute @DEFAULT_SINK@ off && \
+                                  pactl set-sink-volume @DEFAULT_SINK@ +5% && \
+                                  mpv /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga &
+bindsym XF86AudioLowerVolume exec pactl set-sink-mute @DEFAULT_SINK@ off && \
+                                  pactl set-sink-volume @DEFAULT_SINK@ -5% && \
+                                  mpv /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga &
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && \
+                           mpv /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga &
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 # Brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
