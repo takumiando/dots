@@ -67,4 +67,5 @@ augroup END
 nnoremap <silent> <C-m> :PrevimOpen<CR>
 let g:previm_open_cmd = 'google-chrome'
 let g:vim_markdown_folding_disabled=1
+let g:previm_show_header = 0
 au BufRead,BufNewFile *.md set filetype=markdown
