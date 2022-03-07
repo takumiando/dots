@@ -7,7 +7,8 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $menu dmenu_path | dmenu -fn Terminus:pixelsize=12 -nb "$background" -nf "$foreground" -sb "$color3" -sf "$foreground" | xargs swaymsg exec --
+set $font "JetBrainsMono 10"
+set $menu rofi -show run -font $font | xargs swaymsg exec --
 
 output * bg $wallpaper fill
 
@@ -187,7 +188,7 @@ bar {
     position bottom
     height 30
 
-    font Terminus 8
+    font $font
     status_command while $scripts/status; do sleep 0.2; done
 
     strip_workspace_numbers yes
@@ -195,10 +196,10 @@ bar {
     gaps 0 0
     colors {
         statusline $foreground
-        background "$background"e6
-        focused_workspace "$color3"e6 "$color3"e6 $foreground
-        active_workspace "$background"e6 "$background"e6 $foreground
-        inactive_workspace "$background"e6 "$background"e6 $foreground
+        background $background
+        focused_workspace $color3 $color3 $background
+        active_workspace $background $background $foreground
+        inactive_workspace $background $background $foreground
     }
 }
 
