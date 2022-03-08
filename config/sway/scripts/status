@@ -5,18 +5,6 @@ clock () {
         echo -n "$DATETIME"
 }
 
-volume () {
-    LINE=$(amixer sget Master 2> /dev/null | grep "%" | head -n 1 | sed -e 's/\[\|\]//g')
-    VOL=$(echo $LINE |  awk '{print $5}')
-    STATUS=$(echo $LINE |  awk '{print $6}')
-
-    if [ "$STATUS" = "on" ]; then
-        echo -n "$VOL"
-    else
-        echo -n "mute"
-    fi
-}
-
 battery () {
     BAT=/sys/class/power_supply/BAT0
 
@@ -27,40 +15,11 @@ battery () {
     CAPACITY=$(cat $BAT/capacity)
     STATUS=$(cat $BAT/status)
 
-    if [ "$STATUS" = "Discharging" ]; then
-        PICT='|'
-    else
-        PICT='+'
+    if [ "$STATUS" != "Discharging" ]; then
+        CAPACITY="+${CAPACITY}"
     fi
 
-    if [ $CAPACITY -eq 100 ]; then
-        PICT_NUM=5
-        PICT_SUB_NUM=0
-        PICT_SPACE_NUM=0
-    else
-        PICT_NUM=$(expr $CAPACITY / 20)
-        PICT_SUB_NUM=$(expr $CAPACITY % 20 / 10)
-        PICT_SPACE_NUM=$(expr 5 - $PICT_NUM - $PICT_SUB_NUM)
-    fi
-
-    echo -n "["
-
-    for i in $(seq $PICT_NUM)
-    do
-        echo -n "$PICT"
-    done
-
-    for i in $(seq $PICT_SUB_NUM)
-    do
-        echo -n "."
-    done
-
-    for i in $(seq $PICT_SPACE_NUM)
-    do
-        echo -n "_"
-    done
-
-    echo -n "}"
+    echo -n "${CAPACITY}%"
 }
 
 im () {
@@ -74,4 +33,4 @@ im () {
     esac
 }
 
-echo $(im) $(battery) $(volume) $(clock)
+echo $(im) $(battery) $(clock)
