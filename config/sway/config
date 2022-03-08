@@ -9,10 +9,11 @@ set $right l
 set $term WINIT_UNIX_BACKEND=x11 alacritty
 set $font "JetBrainsMono 10"
 set $menu rofi -show run -font $font | xargs swaymsg exec --
+
 set $wobpipe /tmp/wobpipe
 exec mkfifo $wobpipe
-exec killall tail
-exec tail -f $wobpipe | wob &
+exec killall wob 2> /dev/null
+exec tail -f $wobpipe | wob --border-color "$foreground"ff --background-color "$background"ff --bar-color "$color3"ff --overflow-border-color "$foreground"ff --overflow-background-color "$background"ff --overflow-bar-color "$color1"ff &
 
 output * bg $wallpaper fill
 
