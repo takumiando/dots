@@ -6,7 +6,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term WINIT_UNIX_BACKEND=x11 alacritty
 set $font "JetBrainsMono 10"
 set $menu rofi -show run -font $font | xargs swaymsg exec --
 
