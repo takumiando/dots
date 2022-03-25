@@ -7,7 +7,7 @@ colors:
     foreground: '#ffffff'
 
 font:
-  size: 6
+  size: 10
   normal:
     family: 'JetBrainsMono'
     style: Regular
