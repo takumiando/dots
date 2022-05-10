@@ -14,4 +14,3 @@ do
 done
 
 cp -rT ./config/ ~/.config/
-ln -snfv "$DOTPATH"/.vimrc ~/.config/nvim/init.vim
