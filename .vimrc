@@ -1,7 +1,7 @@
 "" load plug setting
 source ~/.vim-plug
 
-"" tmux setting 
+"" tmux setting
 augroup titlesettings
 	autocmd!
 	autocmd BufEnter * call system("tmux rename-window " . "'[vim] " . expand("%:t") . "'")
@@ -39,6 +39,7 @@ set wildmenu wildmode=list:longest,full
 set history=10000
 
 set helplang=jp
+set laststatus=2
 
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
@@ -66,7 +67,7 @@ augroup fileTypeIndent
 augroup END
 
 nnoremap <silent> <C-m> :PrevimOpen<CR>
-let g:previm_open_cmd = 'google-chrome'
+let g:previm_open_cmd = 'google-chrome-stable'
 let g:vim_markdown_folding_disabled=1
 let g:previm_show_header = 0
 au BufRead,BufNewFile *.md set filetype=markdown

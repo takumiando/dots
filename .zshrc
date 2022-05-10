@@ -90,10 +90,14 @@ alias less='less -R'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias vi='vim'
 alias emacs='emacs -nw'
 alias diff='diff -uprN'
 alias ag='ag --color-match "39;46" --color-path "1;34" --color-line-number "1;30"'
+if type nvim > /dev/null 2>&1; then
+  alias vi=nvim
+elif type vim > /dev/null 2>&1; then
+  alias vi=vim
+fi
 
 stty stop undef
 

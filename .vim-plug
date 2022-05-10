@@ -11,5 +11,7 @@ Plug 'dylanaraps/fff.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'previm/previm'
 Plug 'sotte/presenting.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'Shougo/ddc.vim'
 
 call plug#end()

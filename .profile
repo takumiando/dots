@@ -1,5 +1,5 @@
 export PATH=~/bin:$PATH
-export EDITOR=vim
+export EDITOR=vi
 
 case $(uname) in
 	Darwin )

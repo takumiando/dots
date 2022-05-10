@@ -8,9 +8,10 @@ do
         ".git"|".gitignore")
             ;;
         *)
-            ln -snfv $DOTPATH/$f $HOME/$f
+            ln -snfv "$DOTPATH"/"$f" ~/"$f"
             ;;
     esac
 done
 
 cp -rT ./config/ ~/.config/
+ln -snfv "$DOTPATH"/.vimrc ~/.config/nvim/init.vim
