@@ -12,6 +12,7 @@ return {
         selection_bg = "white",
         selection_fg = "black",
     },
+    window_background_opacity = 0.8,
 
     use_fancy_tab_bar = false,
     enable_tab_bar = false,
