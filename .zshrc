@@ -65,12 +65,16 @@ zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' formats "%b$(blink %c%u)"
 zstyle ':vcs_info:*' actionformats "$(blink %b%c%u)"
 
-local PS1_HOST='%K{blue}%F{black}$HOST%f%k'
-local PS1_PWD='%{%K{cyan}%F{black}%}%(5~,%-2~/.../%2~,%~)%{%f%k%}'
-local PS1_GIT='%K{yellow}%F{black}${vcs_info_msg_0_}%f%k'
-local PS1_CHAR='%F{yellow}> %f'
+local PS1_HOST='%B%F{red}$HOST%f%b'
+local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
+local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
+local PS1_CHAR='%B%F{green}> %f%b'
 
-PS1="${PS1_HOST}${PS1_PWD}${PS1_GIT}
+PS1_INFO="${PS1_PWD} ${PS1_GIT}"
+if [ -n "$SSH_TTY" ]; then
+    PS1_INFO="${PS1_HOST} ${PS1_INFO}"
+fi
+PS1="${PS1_INFO}
 ${PS1_CHAR}"
 
 case $(uname) in
