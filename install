@@ -1,16 +1,19 @@
 #!/bin/sh
 
-DOTPATH=~/dots
+cd "$(dirname "$0")" || exit
 
 for f in .??*
 do
-    case $f in
-        ".git"|".gitignore")
+    case "$f" in
+        .git*)
             ;;
         *)
-            ln -snfv "$DOTPATH"/"$f" ~/"$f"
+            ln -snfv "$PWD"/"$f" ~/"$f"
             ;;
     esac
 done
 
-cp -rT ./config/ ~/.config/
+find config -type f | while read -r f
+do
+    ln -snfv "$PWD"/"$f" ~/."$f"
+done
