@@ -28,31 +28,32 @@ SAVEHIST=10000000
 LESS=-R
 
 precmd () {
-	vcs_info
+    vcs_info
 }
 
 history-all () {
-	history -E 1
+    history -E 1
 }
 
 blink () {
-	blink="\033[05m"
-	end="\033[00m"
-	echo -e "${blink}${1}${end}"
+    blink="\033[05m"
+    end="\033[00m"
+    echo -e "${blink}${1}${end}"
 }
 
 fancy-ctrl-z () {
-	 if [[ $#BUFFER -eq 0 ]]; then
-		BUFFER="fg"
-		zle accept-line
-	else
-		zle push-input
-		zle clear-screen
-	fi
+    if [ "$#BUFFER" -eq 0 ]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
 }
 
 zle -N fancy-ctrl-z
 
+bindkey -d
 bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -68,23 +69,16 @@ zstyle ':vcs_info:*' actionformats "$(blink %b%c%u)"
 local PS1_HOST='%B%F{red}$HOST%f%b'
 local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
 local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
-local PS1_CHAR='%B%F{green}> %f%b'
+local PS1_SYMBOL='%B%F{green}> %f%b'
 
-PS1_INFO="${PS1_PWD} ${PS1_GIT}"
+PS1="$PS1_PWD $PS1_GIT
+$PS1_SYMBOL"
 if [ -n "$SSH_TTY" ]; then
-    PS1_INFO="${PS1_HOST} ${PS1_INFO}"
+    PS1="$PS1_HOST $PS1"
 fi
-PS1="${PS1_INFO}
-${PS1_CHAR}"
 
-case $(uname) in
-	Darwin)
-		alias ls='ls -FG'
-		;;
-	Linux)
-		alias ls='ls --color -F'
-		;;
-esac
+stty stop undef
+
 alias l='ls'
 alias la='ls -a'
 alias ll='ls -l'
@@ -97,20 +91,26 @@ alias egrep='egrep --color=auto'
 alias emacs='emacs -nw'
 alias diff='diff -uprN'
 alias ag='ag --color-match "39;46" --color-path "1;34" --color-line-number "1;30"'
+
+case "$(uname)" in
+    Darwin)
+        alias ls='ls -FG'
+        ;;
+    Linux)
+        alias ls='ls --color -F'
+        ;;
+esac
+
 if type nvim > /dev/null 2>&1; then
-  alias vi=nvim
+    alias vi=nvim
 elif type vim > /dev/null 2>&1; then
-  alias vi=vim
+    alias vi=vim
 fi
 
-stty stop undef
-
-if [ -z ${SSH_TTY} ]; then
+if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
     case "$TERM" in
-        "st-256color"|"xterm-256color"|"alacritty")
-		    if [ -f ${HOME}/.cache/wal/sequences ]; then
-			    cat ${HOME}/.cache/wal/sequences
-		    fi
+        st-256color|xterm-256color|alacritty)
+            cat ${HOME}/.cache/wal/sequences
             ;;
     esac
 fi

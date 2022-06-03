@@ -62,6 +62,7 @@ augroup fileTypeIndent
 	autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+	autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufNewFile,BufRead "Kconfig" set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
