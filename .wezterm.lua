@@ -27,5 +27,6 @@ return {
     },
 
     enable_wayland = true,
+    use_ime = true,
     exit_behavior = "Close",
 }
