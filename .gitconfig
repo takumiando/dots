@@ -35,14 +35,16 @@
     helper = store
 [alias]
     l  = log --oneline --decorate
-    re = rebase -i
-    co = checkout
-    mg = merge
-    df = diff
-    cm = commit --signoff -m
+    ch = checkout
+    co = commit --signoff -m
     ca = commit --amend
     s  = status
-    p  = push
+    d = diff
     cp = cherry-pick
+    rb = rebase
+    cl = clean -dfx
+    gz = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.gz"
+    zst = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.zst"
+    zip = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".zip"
 [includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work
