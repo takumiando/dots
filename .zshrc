@@ -91,6 +91,8 @@ alias egrep='grep -F --color=auto'
 alias emacs='emacs -nw'
 alias diff='diff -uprN'
 alias ag='ag --color-match "39;46" --color-path "1;34" --color-line-number "1;30"'
+alias essh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
+alias escp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
 
 case "$(uname)" in
     Darwin)
