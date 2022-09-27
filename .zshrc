@@ -79,36 +79,6 @@ fi
 
 stty stop undef
 
-alias l='ls'
-alias la='ls -a'
-alias ll='ls -l'
-alias lh='ls -lh'
-alias lla='ls -la'
-alias less='less -R'
-alias grep='grep --color=auto'
-alias fgrep='grep -E --color=auto'
-alias egrep='grep -F --color=auto'
-alias emacs='emacs -nw'
-alias diff='diff -uprN'
-alias ag='ag --color-match "39;46" --color-path "1;34" --color-line-number "1;30"'
-alias essh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
-alias escp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
-
-case "$(uname)" in
-    Darwin)
-        alias ls='ls -FG'
-        ;;
-    Linux)
-        alias ls='ls --color -F'
-        ;;
-esac
-
-if type nvim > /dev/null 2>&1; then
-    alias vi=nvim
-elif type vim > /dev/null 2>&1; then
-    alias vi=vim
-fi
-
 if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
     case "$TERM" in
         st-256color|xterm-256color|alacritty)
@@ -116,3 +86,5 @@ if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
             ;;
     esac
 fi
+
+source "$HOME"/.alias
