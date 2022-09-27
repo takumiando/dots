@@ -29,3 +29,7 @@ if type nvim > /dev/null 2>&1; then
 elif type vim > /dev/null 2>&1; then
     alias vi=vim
 fi
+
+if type podman > /dev/null 2>&1; then
+    alias docker=podman
+fi
