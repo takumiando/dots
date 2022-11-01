@@ -41,6 +41,8 @@ set history=10000
 set helplang=jp
 set laststatus=2
 
+set mouse=
+
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 imap <C-j> <esc>
