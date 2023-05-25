@@ -13,6 +13,7 @@ append_path /usr/sbin
 append_path /usr/bin
 append_path /sbin
 append_path /bin
+append_path ~/.local/bin
 append_path ~/bin
 
 case "$(uname)" in

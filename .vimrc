@@ -1,5 +1,5 @@
 "" load plug setting
-source ~/.vim-plug
+source ~/.vim-plug.vim
 
 "" tmux setting
 augroup titlesettings
@@ -42,7 +42,7 @@ set helplang=jp
 set laststatus=2
 
 set mouse=
-
+set noshowmode
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 imap <C-j> <esc>
@@ -66,6 +66,7 @@ augroup fileTypeIndent
 	autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufNewFile,BufRead "Kconfig" set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+	autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
 

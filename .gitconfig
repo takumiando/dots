@@ -22,7 +22,8 @@
     old = magenta bold
     new = blue bold
 [diff]
-    tool = vimdiff
+    algorithm = histogram
+    colorMoved = dimmed-zebra
 [difftool]
     prompt = true
 [merge]
@@ -46,5 +47,6 @@
     gz = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.gz"
     zst = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.zst"
     zip = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".zip"
+    wipe = !"for MODULE in $(git rev-parse --show-toplevel; git submodule | awk '{print $2}'); do printf \"Cleaning %s...\n\" \"$MODULE\"; pushd \"$MODULE\" > /dev/null && git clean -dfx > /dev/null && popd > /dev/null; done"
 [includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work

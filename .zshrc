@@ -21,11 +21,19 @@ setopt list_types
 setopt auto_param_slash
 setopt prompt_subst
 
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export LS_COLORS='di=01;34:ln=01;36:so=01;33:pi=01;32:ex=01;31:bd=42;30:cd=44;30:su=41;30:sg=46;30:tw=42;34:ow=44;32'
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
-LESS=-R
+export LESS=-R
+
+export LESS_TERMCAP_mb=$(printf "\e[1;32m") \
+export LESS_TERMCAP_md=$(printf "\e[1;32m") \
+export LESS_TERMCAP_me=$(printf "\e[0m") \
+export LESS_TERMCAP_se=$(printf "\e[0m") \
+export LESS_TERMCAP_so=$(printf "\e[1;42;37m") \
+export LESS_TERMCAP_ue=$(printf "\e[0m") \
+export LESS_TERMCAP_us=$(printf "\e[1;32m") \
 
 precmd () {
     vcs_info
