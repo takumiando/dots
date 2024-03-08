@@ -58,6 +58,7 @@ nnoremap <S-s> :rv!<CR>
 augroup fileTypeIndent
 	autocmd!
 	autocmd BufNewFile,BufRead *.c set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+	autocmd BufNewFile,BufRead Makefile set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead *.h set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead *.dts* set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab

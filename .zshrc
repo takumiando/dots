@@ -5,6 +5,10 @@
 # (_)___/____/_/ /_/_/   \___/
 #
 
+[ -f /etc/os-release ] && source /etc/os-release
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
 autoload -Uz compinit && compinit
 autoload -Uz promptinit && promptinit
 autoload -Uz colors && colors
@@ -34,6 +38,8 @@ export LESS_TERMCAP_se=$(printf "\e[0m") \
 export LESS_TERMCAP_so=$(printf "\e[1;42;37m") \
 export LESS_TERMCAP_ue=$(printf "\e[0m") \
 export LESS_TERMCAP_us=$(printf "\e[1;32m") \
+
+export FZF_CTRL_T_OPTS="--prompt='? '"
 
 precmd () {
     vcs_info
@@ -66,6 +72,7 @@ bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '^Z' fancy-ctrl-z
+bindkey '^F' fzf-file-widget
 
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':vcs_info:*' check-for-changes true
@@ -75,14 +82,18 @@ zstyle ':vcs_info:*' formats "%b$(blink %c%u)"
 zstyle ':vcs_info:*' actionformats "$(blink %b%c%u)"
 
 local PS1_HOST='%B%F{red}$HOST%f%b'
+local PS1_POD='%B%F{green}$HOST/$ID%f%b'
 local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
 local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
 local PS1_SYMBOL='%B%F{green}> %f%b'
 
 PS1="$PS1_PWD $PS1_GIT
 $PS1_SYMBOL"
+
 if [ -n "$SSH_TTY" ]; then
     PS1="$PS1_HOST $PS1"
+elif [ -n "$container" ]; then
+    PS1="$PS1_POD $PS1"
 fi
 
 stty stop undef
