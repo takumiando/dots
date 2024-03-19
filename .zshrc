@@ -107,3 +107,4 @@ if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
 fi
 
 source "$HOME"/.alias
+source "$HOME"/.west.zsh
