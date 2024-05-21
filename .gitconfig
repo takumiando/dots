@@ -1,6 +1,7 @@
 [user]
     name = Takumi Ando
     email = me@tmmyando.com
+    signingkey = 7B58A4A61813F3195B0FD31EF32AC641E32C1B8F
 [core]
     editor = vim
 [init]
@@ -35,18 +36,20 @@
 [credential]
     helper = store
 [alias]
-    l  = log --oneline --decorate
-    ch = checkout
-    co = commit --signoff -m
-    ca = commit --amend
+    l  = log --pretty=format:\"%C(green)%h %C(cyan)%ad%C(red)%d %C(reset)%s %C(blue)[%cn]\" --decorate --date=short
+    a  = add
     s  = status
-    d = diff
+    d  = diff
+    p  = push
+    r  = remote
+    co = commit --signoff --verbose
+    ca = commit --amend
+    ch = checkout
     cp = cherry-pick
-    rb = rebase
     cl = clean -dfx
-    gz = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.gz"
-    zst = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.zst"
-    zip = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".zip"
-    wipe = !"for MODULE in $(git rev-parse --show-toplevel; git submodule | awk '{print $2}'); do printf \"Cleaning %s...\n\" \"$MODULE\"; pushd \"$MODULE\" > /dev/null && git clean -dfx > /dev/null && popd > /dev/null; done"
+    gz   = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.gz"
+    zst  = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.zst"
+    zip  = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".zip"
+    wipe = !"for MODULE in $(git rev-parse --show-toplevel; git submodule | awk '{print $2}'); do printf \"Cleaning %s...\n\" \"$MODULE\"; pushd \"$MODULE\" > /dev/null && git clean -dfx && popd > /dev/null; done"
 [includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work
