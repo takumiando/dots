@@ -31,13 +31,13 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 export LESS=-R
 
-export LESS_TERMCAP_mb=$(printf "\e[1;32m") \
-export LESS_TERMCAP_md=$(printf "\e[1;32m") \
-export LESS_TERMCAP_me=$(printf "\e[0m") \
-export LESS_TERMCAP_se=$(printf "\e[0m") \
-export LESS_TERMCAP_so=$(printf "\e[1;42;37m") \
-export LESS_TERMCAP_ue=$(printf "\e[0m") \
-export LESS_TERMCAP_us=$(printf "\e[1;32m") \
+export LESS_TERMCAP_mb=$(printf "\e[1;32m")
+export LESS_TERMCAP_md=$(printf "\e[1;32m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_so=$(printf "\e[1;42;37m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 export FZF_CTRL_T_OPTS="--prompt='? '"
 
@@ -52,11 +52,11 @@ history-all () {
 blink () {
     blink="\033[05m"
     end="\033[00m"
-    echo -e "${blink}${1}${end}"
+    printf "%b%s%b" "${blink}" "${1}" "${end}"
 }
 
 fancy-ctrl-z () {
-    if [ "$#BUFFER" -eq 0 ]; then
+    if [ "${#BUFFER}" -eq 0 ]; then
         BUFFER="fg"
         zle accept-line
     else
@@ -106,5 +106,5 @@ if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
     esac
 fi
 
-source "$HOME"/.alias
-source "$HOME"/.west.zsh
+[ -e "$HOME"/.alias ] && source "$HOME"/.alias
+[ -e "$HOME"/.west.zsh ] &&  source "$HOME"/.west.zsh
