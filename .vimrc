@@ -38,6 +38,7 @@ set mouse=
 set noshowmode
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
+inoremap <C-e> <esc>
 inoremap <C-w> <C-p>
 noremap <C-f> :FZF<CR>
 noremap <C-j> <C-w>W
