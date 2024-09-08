@@ -41,8 +41,8 @@ highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 inoremap <C-e> <esc>
 inoremap <C-w> <C-p>
 noremap <C-f> :FZF<CR>
-noremap <C-j> <C-w>W
-noremap <C-k> <C-w>w
+noremap <C-j> <C-w>w
+noremap <C-k> <C-w>W
 noremap <C-_> :sp<CR> <C-w>w :FZF<CR>
 noremap <C-\> :vsp<CR> <C-w>w :FZF<CR>
 noremap <C-g> :vsp<CR> <C-w>w :exe("GtagsCursor")<CR>
