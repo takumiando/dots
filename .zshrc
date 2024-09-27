@@ -65,6 +65,26 @@ fancy-ctrl-z () {
     fi
 }
 
+color () {
+    COLOR="$1"
+    shift
+    INPUT="$@"
+
+    if [ -z "$COLOR" ]; then
+        printf "%s" "$INPUT"
+        return
+    fi
+
+    R_hex=$(printf "%s" "$COLOR" | cut -c1-2)
+    G_hex=$(printf "%s" "$COLOR" | cut -c3-4)
+    B_hex=$(printf "%s" "$COLOR" | cut -c5-6)
+    R=$(printf "%d" "0x$R_hex")
+    G=$(printf "%d" "0x$G_hex")
+    B=$(printf "%d" "0x$B_hex")
+
+    printf '\033[1;38;2;%d;%d;%dm%s\033[0m\n' "$R" "$G" "$B" "$INPUT"
+}
+
 zle -N fancy-ctrl-z
 
 bindkey -d
@@ -81,8 +101,9 @@ zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' formats "%b$(blink %c%u)"
 zstyle ':vcs_info:*' actionformats "$(blink %b%c%u)"
 
+DISTRO="$(grep '^NAME=' /etc/os-release 2> /dev/null | tr -d '"' | cut -d = -f 2)"
+
 local PS1_HOST='%B%F{red}$HOST%f%b'
-local PS1_POD='%B%F{green}$HOST/$ID%f%b'
 local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
 local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
 local PS1_SYMBOL='%B%F{green}> %f%b'
@@ -93,6 +114,18 @@ $PS1_SYMBOL"
 if [ -n "$SSH_TTY" ]; then
     PS1="$PS1_HOST $PS1"
 elif [ -n "$container" ]; then
+    local PS1_POD='$HOST/$ID'
+    case "$DISTRO" in
+        "Ubuntu")
+            PS1_POD="$(color e95420 $PS1_POD)"
+            ;;
+        "Fedora Linux")
+            PS1_POD="$(color 85ccf0 $PS1_POD)"
+            ;;
+        *)
+            PS1_POD="$(color 888888 $PS1_POD)"
+            ;;
+    esac
     PS1="$PS1_POD $PS1"
 fi
 
