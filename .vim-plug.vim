@@ -17,5 +17,6 @@ Plug 'previm/previm'
 Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
+Plug 'github/copilot.vim'
 
 call plug#end()
