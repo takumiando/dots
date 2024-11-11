@@ -18,5 +18,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-git'
 
 call plug#end()
