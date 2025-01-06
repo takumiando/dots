@@ -21,6 +21,8 @@ gtk-tabs-location = bottom
 focus-follows-mouse = false
 unfocused-split-opacity = 0.6
 
+shell-integration = zsh
+
 keybind = super+\=new_split:right
 keybind = super+-=new_split:down
 keybind = super+t=new_tab
