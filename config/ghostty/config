@@ -18,6 +18,7 @@ window-padding-y = 40
 gtk-titlebar = true
 gtk-tabs-location = bottom
 
+cursor-style-blink = true
 focus-follows-mouse = false
 unfocused-split-opacity = 0.6
 
