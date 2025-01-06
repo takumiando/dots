@@ -1,7 +1,25 @@
 title = " "
-
+theme = Hybrid
 background = 000000
 foreground = ffffff
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-size = 12
+
+window-theme = ghostty
+window-decoration = true
+window-padding-color = background
+window-padding-x = 40
+window-padding-y = 40
+
+gtk-titlebar = true
+gtk-tabs-location = bottom
+
+focus-follows-mouse = false
+unfocused-split-opacity = 0.6
 
 keybind = super+\=new_split:right
 keybind = super+-=new_split:down
@@ -10,15 +28,3 @@ keybind = super+right_bracket=goto_split:next
 keybind = super+left_bracket=goto_split:previous
 keybind = super+shift+right_bracket=next_tab
 keybind = super+shift+left_bracket=previous_tab
-theme = Hybrid
-
-window-padding-x = 40
-window-padding-y = 40
-focus-follows-mouse = false
-unfocused-split-opacity = 0.6
-window-padding-color = background
-window-decoration = true
-window-theme = ghostty
-
-gtk-titlebar = true
-gtk-tabs-location = bottom
