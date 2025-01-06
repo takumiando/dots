@@ -21,6 +21,7 @@ gtk-tabs-location = bottom
 cursor-style-blink = true
 focus-follows-mouse = false
 unfocused-split-opacity = 0.6
+link-url = true
 
 shell-integration = zsh
 
