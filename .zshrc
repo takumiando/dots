@@ -49,12 +49,6 @@ history-all () {
     history -E 1
 }
 
-blink () {
-    blink="\033[05m"
-    end="\033[00m"
-    printf "%b%s%b" "${blink}" "${1}" "${end}"
-}
-
 fancy-ctrl-z () {
     if [ "${#BUFFER}" -eq 0 ]; then
         BUFFER="fg"
@@ -95,24 +89,26 @@ bindkey '^Z' fancy-ctrl-z
 bindkey '^F' fzf-file-widget
 
 zstyle ':completion:*' list-colors "${LS_COLORS}"
+
+local ACTION='%B%F{yellow}!'
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' unstagedstr '!'
-zstyle ':vcs_info:*' formats "%b$(blink %c%u)"
-zstyle ':vcs_info:*' actionformats "$(blink %b%c%u)"
+zstyle ':vcs_info:*' stagedstr '%B%F{blue}+%f%b'
+zstyle ':vcs_info:*' unstagedstr '%B%F{red}*%f%b'
+zstyle ':vcs_info:*' formats "%b%c%u"
+zstyle ':vcs_info:*' actionformats "%b%B%F{yellow}!%c%u"
 
 DISTRO="$(grep '^NAME=' /etc/os-release 2> /dev/null | tr -d '"' | cut -d = -f 2)"
 
 local PS1_HOST='%B%F{red}$HOST%f%b'
 local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
-local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
+local PS1_GIT='%B%F{black}${vcs_info_msg_0_}%f%b'
 local PS1_SYMBOL='%B%F{green}➔ %f%b'
 
-PS1="$PS1_PWD $PS1_GIT
-$PS1_SYMBOL"
+PS1="${PS1_PWD} ${PS1_GIT}
+${PS1_SYMBOL}"
 
 if [ -n "$SSH_TTY" ]; then
-    PS1="$PS1_HOST $PS1"
+    PS1='${PS1_HOST} ${PS1}'
 elif [ -n "$container" ]; then
     local PS1_POD='$HOST/$ID'
     case "$DISTRO" in
