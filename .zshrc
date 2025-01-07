@@ -106,7 +106,7 @@ DISTRO="$(grep '^NAME=' /etc/os-release 2> /dev/null | tr -d '"' | cut -d = -f 2
 local PS1_HOST='%B%F{red}$HOST%f%b'
 local PS1_PWD='%B%F{blue}%(5~,%-2~/.../%2~,%~)%f%b'
 local PS1_GIT='%B%F{yellow}${vcs_info_msg_0_}%f%b'
-local PS1_SYMBOL='%B%F{green}> %f%b'
+local PS1_SYMBOL='%B%F{green}➔ %f%b'
 
 PS1="$PS1_PWD $PS1_GIT
 $PS1_SYMBOL"
