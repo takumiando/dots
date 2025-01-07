@@ -8,19 +8,14 @@
     defaultBranch = main
 [push]
     default = matching
-[color "diff-highlight"]
-    oldNormal = magenta bold
-    oldHighlight = magenta bold 54
-    newNormal = blue bold
-    newHighlight = blue bold 24
 [color "status"]
     added = blue bold
-    changed = magenta bold
+    changed = red bold
     untracked = cyan bold
 [color "diff"]
     meta = white bold
     frag = black yellow
-    old = magenta bold
+    old = red bold
     new = blue bold
 [diff]
     algorithm = histogram
