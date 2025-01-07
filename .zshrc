@@ -108,7 +108,7 @@ PS1="${PS1_PWD} ${PS1_GIT}
 ${PS1_SYMBOL}"
 
 if [ -n "$SSH_TTY" ]; then
-    PS1='${PS1_HOST} ${PS1}'
+    PS1="${PS1_HOST} ${PS1}"
 elif [ -n "$container" ]; then
     local PS1_POD='$HOST/$ID'
     case "$DISTRO" in
