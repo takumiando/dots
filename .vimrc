@@ -69,5 +69,6 @@ augroup fileTypeIndent
 	autocmd BufNewFile,BufRead Kconfig set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
 	autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd BufNewFile,BufRead *.md set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd BufNewFile,BufRead *.nix set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
