@@ -102,7 +102,12 @@ DISTRO="$(grep '^NAME=' /etc/os-release 2> /dev/null | tr -d '"' | cut -d = -f 2
 local PS1_HOST='%B%F{red}$HOST%f%b'
 local PS1_PWD='%B%F{cyan}%(5~,%-2~/.../%2~,%~)%f%b'
 local PS1_GIT='%B%F{black}${vcs_info_msg_0_}%f%b'
-local PS1_SYMBOL='%B%F{green}➔ %f%b'
+
+if [ -n "$IN_NIX_SHELL" ]; then
+    local PS1_SYMBOL='%B%F{magenta}➔ %f%b'
+else
+    local PS1_SYMBOL='%B%F{green}➔ %f%b'
+fi
 
 PS1="${PS1_PWD} ${PS1_GIT}
 ${PS1_SYMBOL}"
