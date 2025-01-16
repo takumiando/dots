@@ -16,6 +16,7 @@ alias essh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o L
 alias escp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
 alias minicom='minicom -c on'
 alias icat='kitten icat'
+alias nix-shell='nix-shell --run "$SHELL"'
 
 case "$(uname)" in
     Darwin)
