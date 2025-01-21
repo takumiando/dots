@@ -90,7 +90,6 @@ bindkey '^F' fzf-file-widget
 
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-local ACTION='%B%F{yellow}!'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%B%F{blue}+%f%b'
 zstyle ':vcs_info:*' unstagedstr '%B%F{red}*%f%b'
