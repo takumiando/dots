@@ -1,7 +1,30 @@
 title = " "
-theme = Hybrid
-background = 000000
-foreground = ffffff
+
+background = #000000
+foreground = #cad7ca
+
+cursor-color = #cc7c34
+cursor-text = #000000
+selection-background = #cc7c34
+selection-foreground = #000000
+
+palette = 0=#4a4131
+palette = 1=#cb712a
+palette = 2=#cc7c34
+palette = 3=#c38e45
+palette = 4=#767b6f
+palette = 5=#9fafaf
+palette = 6=#86a3a4
+palette = 7=#cad7ca
+
+palette = 8=#4a4131
+palette = 9=#cb712a
+palette = 10=#cc7c34
+palette = 11=#c38e45
+palette = 12=#767b6f
+palette = 13=#9fafaf
+palette = 14=#86a3a4
+palette = 15=#cad7ca
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-feature = -calt
