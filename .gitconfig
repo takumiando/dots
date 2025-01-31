@@ -15,8 +15,8 @@
 [color "diff"]
     meta = white bold
     frag = black yellow
-    old = red bold
-    new = blue bold
+    old = black bold
+    new = green bold
 [diff]
     algorithm = histogram
     colorMoved = dimmed-zebra
