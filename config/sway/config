@@ -227,6 +227,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    bindsym Shift+Print exec slurp | xargs grim -g
 
 #
 # Status Bar:
@@ -265,10 +266,9 @@ gaps outer 0
 default_border pixel 1
 default_floating_border pixel 0
 client.focused #880000 #880000 #880000 #880000
-client.focused_inactive #555555 #555555 #555555
-client.focused_inactive #555555 #555555 #555555
-client.unfocused #555555 #555555 #555555
-client.urgent #555555 #555555 #555555
+client.focused_inactive #000000 #000000 #000000 #000000
+client.unfocused #000000 #000000 #000000 #000000
+client.urgent #000000 #000000 #000000 #000000
 
 focus_follows_mouse no
 include /etc/sway/config.d/*

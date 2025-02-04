@@ -30,10 +30,10 @@ battery () {
     STATUS="$(cat "$BAT"/status)"
 
     if [ "$STATUS"    != "Discharging"    ]; then
-        CAPACITY=+"$CAPACITY"
+        CHARGING='+'
     fi
 
-    printf "    bat:%s%%"    "$CAPACITY"
+    printf "    bat:%s%%%s" "$CAPACITY" "$CHARGING"
 }
 
 clock () {
