@@ -13,36 +13,45 @@ im () {
 
 volume () {
     VOL="$(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -n 1 2> /dev/null)"
+    MUTE="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')"
 
-    if [ -n "$VOL"    ]; then
-        printf "    vol:%s"    "$VOL"
+    if [ -z "$VOL" ]; then
+        return 1
+    fi
+
+    printf "    vol: "
+
+    if [ "$MUTE" = yes ]; then
+        printf 'mute'
+    else
+        printf "%s" "$VOL"
     fi
 }
 
 battery () {
     BAT=/sys/class/power_supply/BAT0
 
-    if [ ! -e "$BAT"    ]; then
+    if [ ! -e "$BAT" ]; then
         return 1
     fi
 
     CAPACITY="$(cat "$BAT"/capacity)"
     STATUS="$(cat "$BAT"/status)"
 
-    if [ "$STATUS"    != "Discharging"    ]; then
+    if [ "$STATUS" != "Discharging" ]; then
         CHARGING='+'
     fi
 
-    printf "    bat:%s%%%s" "$CAPACITY" "$CHARGING"
+    printf "    bat: %s%%%s" "$CAPACITY" "$CHARGING"
 }
 
 clock () {
-        DATETIME="$(date '+%Y-%m-%d %H:%M:%S')"
-        printf "    %s"    "$DATETIME"
+    DATETIME="$(date '+%Y-%m-%d %H:%M:%S')"
+    printf "    %s" "$DATETIME"
 }
 
 while :
 do
-    printf "%s%s%s%s"    "$(im)"    "$(volume)"    "$(battery)"    "$(clock)"
+    printf "%s%s%s%s" "$(im)" "$(volume)" "$(battery)" "$(clock)"
     sleep 0.1
 done

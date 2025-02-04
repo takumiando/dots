@@ -1,20 +1,22 @@
 set $scripts ${HOME}/.config/sway/
 
 set $mod Mod4
+# https://fontstruct.com/fontstructions/show/2095101/nothing-font-5x5
 set $font 'Nothing Font (5x5) 10'
 set $left h
 set $down j
 set $up k
 set $right l
 set $term ghostty
-#set $menu rofi -show run -font $font
-set $menu wmenu-run -f 'Nothing Font (5x5) 10' -N 000000 -n ffffff -M 000000 -m 880000 -S 000000 -s 880000 -p '>'
+#set $menu wmenu-run -f 'Nothing Font (5x5) 10' -N 000000 -n ffffff -M 000000 -m 880000 -S 000000 -s 880000 -p '>'
+set $menu rofi -show drun -font $font
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-#output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ${HOME}/Pictures/wallpapers/170.jpg fill
+# https://teenage.engineering/_img/5e2973cc253f4f00046262a2_original.jpeg
+output * bg ${HOME}/Pictures/wallpapers/frekvens_3.jpeg fill
+
 #
 # Example configuration:
 #
@@ -250,7 +252,7 @@ bar {
         focused_workspace #000000 #000000 #880000
         active_workspace #000000 #000000 #ffffff
         inactive_workspace #000000 #000000 #ffffff
-        urgent_workspace #880000 #880000 #ffffff
+        urgent_workspace #000000 #000000 #ffc400
     }
 }
 
