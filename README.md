@@ -1,3 +1,3 @@
 # dots
 
-![](img/screenshot.png)
+![](img/sway_dirty.png)
