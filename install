@@ -13,7 +13,7 @@ do
     esac
 done
 
-find config -type f | while read -r f
+find config local -type f | while read -r f
 do
     mkdir -p ~/."$(printf "%s" "$f" | rev | cut -d '/' -f 2- | rev)"
     ln -snfv "$PWD"/"$f" ~/."$f"
