@@ -1,5 +1,4 @@
 # dots
 
-![](img/sway_clean.png)
-![](img/sway_dirty.png)
-![](img/sway_menu.png)
+![](img/clean.png)
+![](img/dirty.png)
