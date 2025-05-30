@@ -1,0 +1,47 @@
+format = """
+$container$hostname$directory$git_branch$git_state$git_status
+$nix_shell$character
+"""
+
+[hostname]
+format = "[$hostname]($style) "
+style = "bold green"
+ssh_only = true
+
+[directory]
+format = "[$path]($style) "
+style = "bold cyan"
+truncation_length = 3
+truncation_symbol = ".../"
+truncate_to_repo = false
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bold blue"
+
+[git_state]
+format = "[$state]($style)"
+style = "bold yellow"
+rebase = "⮠"
+merge = "⭳"
+revert = "∅"
+cherry_pick = "↯"
+bisect = "⭾"
+am_or_rebase = "⮠"
+
+[git_status]
+format = "[$all_status]($style) "
+style = "bold red"
+
+[nix_shell]
+format = "[$symbol]($style)"
+symbol = "*"
+style = "bold #405d99"
+
+[character]
+success_symbol = "[➔](bold green)"
+error_symbol = "[➔](bold red)"
+
+[container]
+style = "bold #e95420"
+format = '[$name]($style) '

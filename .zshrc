@@ -90,54 +90,13 @@ bindkey '^F' fzf-file-widget
 
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%B%F{blue}+%f%b'
-zstyle ':vcs_info:*' unstagedstr '%B%F{red}*%f%b'
-zstyle ':vcs_info:*' formats "%b%c%u"
-zstyle ':vcs_info:*' actionformats "%b%B%F{yellow}!%c%u"
-
-DISTRO="$(grep '^NAME=' /etc/os-release 2> /dev/null | tr -d '"' | cut -d = -f 2)"
-
-local PS1_HOST='%B%F{red}$HOST%f%b'
-local PS1_PWD='%B%F{cyan}%(5~,%-2~/.../%2~,%~)%f%b'
-local PS1_GIT='%B%F{black}${vcs_info_msg_0_}%f%b'
-
-if [ -n "$IN_NIX_SHELL" ]; then
-    local PS1_SYMBOL='%B%F{magenta}➔ %f%b'
-else
-    local PS1_SYMBOL='%B%F{green}➔ %f%b'
-fi
-
-PS1="${PS1_PWD} ${PS1_GIT}
-${PS1_SYMBOL}"
-
-if [ -n "$SSH_TTY" ]; then
-    PS1="${PS1_HOST} ${PS1}"
-elif [ -n "$container" ]; then
-    local PS1_POD='$HOST/$ID'
-    case "$DISTRO" in
-        "Ubuntu")
-            PS1_POD="$(color e95420 $PS1_POD)"
-            ;;
-        "Fedora Linux")
-            PS1_POD="$(color 85ccf0 $PS1_POD)"
-            ;;
-        *)
-            PS1_POD="$(color 888888 $PS1_POD)"
-            ;;
-    esac
-    PS1="$PS1_POD $PS1"
-fi
-
 stty stop undef
-
-if [ -z "$SSH_TTY" ] && [ -f ${HOME}/.cache/wal/sequences ]; then
-    case "$TERM" in
-        st-256color|xterm-256color|alacritty)
-            cat ${HOME}/.cache/wal/sequences
-            ;;
-    esac
-fi
 
 [ -e "$HOME"/.alias ] && source "$HOME"/.alias
 [ -e "$HOME"/.west.zsh ] &&  source "$HOME"/.west.zsh
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+else
+  source ~/.zsh_prompt
+fi
