@@ -3,9 +3,9 @@ source ~/.vim-plug.vim
 
 "" tmux setting
 augroup titlesettings
-	autocmd!
-	autocmd BufEnter * call system("tmux rename-window " . "'[vim] " . expand("%:t") . "'")
-	autocmd VimLeave * call system("tmux rename-window zsh")
+    autocmd!
+    autocmd BufEnter * call system("tmux rename-window " . "'[vim] " . expand("%:t") . "'")
+    autocmd VimLeave * call system("tmux rename-window zsh")
     autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 augroup END
 
@@ -55,20 +55,21 @@ let g:vim_markdown_folding_disabled=1
 let g:previm_show_header = 0
 
 augroup fileTypeIndent
-	autocmd!
-	autocmd BufNewFile,BufRead *.c set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead Makefile set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead *.h set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead *.dts* set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead *.overlay set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-	autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-	autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-	autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-	autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-	autocmd BufNewFile,BufRead Kconfig set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-	autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd!
+    autocmd BufNewFile,BufRead *.c set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.cpp set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead Makefile set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.h set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.dts* set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.overlay set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd BufNewFile,BufRead Kconfig set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
+    autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd BufNewFile,BufRead *.md set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd BufNewFile,BufRead *.nix set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-	autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
+    autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
