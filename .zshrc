@@ -59,26 +59,6 @@ fancy-ctrl-z () {
     fi
 }
 
-color () {
-    COLOR="$1"
-    shift
-    INPUT="$@"
-
-    if [ -z "$COLOR" ]; then
-        printf "%s" "$INPUT"
-        return
-    fi
-
-    R_hex=$(printf "%s" "$COLOR" | cut -c1-2)
-    G_hex=$(printf "%s" "$COLOR" | cut -c3-4)
-    B_hex=$(printf "%s" "$COLOR" | cut -c5-6)
-    R=$(printf "%d" "0x$R_hex")
-    G=$(printf "%d" "0x$G_hex")
-    B=$(printf "%d" "0x$B_hex")
-
-    printf '\033[1;38;2;%d;%d;%dm%s\033[0m\n' "$R" "$G" "$B" "$INPUT"
-}
-
 zle -N fancy-ctrl-z
 
 bindkey -d
