@@ -1,6 +1,6 @@
 format = """
 $container$hostname$directory$git_branch$git_state$git_status
-$nix_shell$character
+$python$nix_shell$character
 """
 
 [hostname]
@@ -45,3 +45,7 @@ error_symbol = "[➔](bold red)"
 [container]
 style = "bold #e95420"
 format = '[$name]($style) '
+
+[python]
+format = '[+]($style)'
+style = 'bold yellow'
