@@ -1,51 +1,53 @@
 format = """
-$container$hostname$directory$git_branch$git_state$git_status
-$python$nix_shell$character
+$container\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$line_break\
+$python\
+$nix_shell\
+$character\
 """
 
 [hostname]
 format = "[$hostname]($style) "
-style = "bold green"
+style = "red bold"
 ssh_only = true
 
 [directory]
 format = "[$path]($style) "
-style = "bold cyan"
+style = "cyan bold"
 truncation_length = 3
 truncation_symbol = ".../"
 truncate_to_repo = false
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bold blue"
+style = "blue bold"
 
 [git_state]
-format = "[$state]($style)"
-style = "bold yellow"
-rebase = "⮠"
-merge = "⭳"
-revert = "∅"
-cherry_pick = "↯"
-bisect = "⭾"
-am_or_rebase = "⮠"
+format = "[⚠]($style)"
+style = "yellow bold"
 
 [git_status]
 format = "[$all_status]($style) "
-style = "bold red"
+style = "red bold"
 
 [nix_shell]
 format = "[$symbol]($style)"
+style = "#405d99 bold"
 symbol = "*"
-style = "bold #405d99"
 
 [character]
-success_symbol = "[➔](bold green)"
-error_symbol = "[➔](bold red)"
+success_symbol = "[➔](green bold)"
+error_symbol = "[➔](red bold)"
 
 [container]
-style = "bold #e95420"
 format = '[$name]($style) '
+style = "#e95420 bold"
 
 [python]
 format = '[+]($style)'
-style = 'bold yellow'
+style = 'yellow bold'
