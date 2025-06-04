@@ -11,10 +11,13 @@ $nix_shell\
 $character\
 """
 
-[hostname]
-format = "[$hostname]($style) "
-style = "red bold"
-ssh_only = true
+[character]
+success_symbol = "[➔](green bold)"
+error_symbol = "[➔](red bold)"
+
+[container]
+format = '[$name]($style) '
+style = "#e95420 bold"
 
 [directory]
 format = "[$path]($style) "
@@ -35,18 +38,15 @@ style = "yellow bold"
 format = "[$all_status]($style) "
 style = "red bold"
 
+[hostname]
+format = "[$hostname]($style) "
+style = "red bold"
+ssh_only = true
+
 [nix_shell]
 format = "[$symbol]($style)"
 style = "#405d99 bold"
 symbol = "*"
-
-[character]
-success_symbol = "[➔](green bold)"
-error_symbol = "[➔](red bold)"
-
-[container]
-format = '[$name]($style) '
-style = "#e95420 bold"
 
 [python]
 format = '[+]($style)'
