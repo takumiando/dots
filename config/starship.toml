@@ -51,3 +51,5 @@ symbol = "*"
 [python]
 format = '[+]($style)'
 style = 'yellow bold'
+detect_extensions = []
+detect_files = []
