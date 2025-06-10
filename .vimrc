@@ -49,6 +49,8 @@ noremap <C-g> :vsp<CR> <C-w>w :exe("GtagsCursor")<CR>
 noremap <silent> <C-m> :PrevimOpen<CR>
 nnoremap <C-s> :wv<CR>
 nnoremap <S-s> :rv!<CR>
+nnoremap <leader>h :syntax keyword TempHighlight <C-r><C-w><CR>:highlight TempHighlight term=reverse cterm=reverse gui=reverse<CR>
+nnoremap <leader>c :syntax clear TempHighlight<CR>
 
 let g:previm_open_cmd = 'xdg-open'
 let g:vim_markdown_folding_disabled=1
