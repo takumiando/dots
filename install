@@ -2,19 +2,15 @@
 
 cd "$(dirname "$0")" || exit
 
-for f in .??*
+for conf in home/* config/* local/*
 do
-    case "$f" in
-        .gitignore|.git)
+    case "$conf" in
+        home/*)
+            ln -snfv "$PWD"/"$conf" ~/."$(basename "$conf")"
             ;;
         *)
-            ln -snfv "$PWD"/"$f" ~/"$f"
+            mkdir -p ~/."$(dirname "$conf")"
+            ln -snfv "$PWD"/"$conf" ~/."$conf"
             ;;
     esac
-done
-
-find config local -type f | while read -r f
-do
-    mkdir -p ~/."$(printf "%s" "$f" | rev | cut -d '/' -f 2- | rev)"
-    ln -snfv "$PWD"/"$f" ~/."$f"
 done
