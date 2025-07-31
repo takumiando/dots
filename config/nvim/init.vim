@@ -1,1 +1,1 @@
-/home/takumi/.vimrc
+../../home/vimrc
