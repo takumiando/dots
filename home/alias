@@ -16,6 +16,8 @@ alias essh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o L
 alias escp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=error'
 alias minicom='minicom -c on'
 alias icat='chafa -f kitty'
+alias zstc='tar --zstd -cvf'
+alias zstx='tar --zstd -xvf'
 alias nix-shell='nix-shell --run "$SHELL"'
 
 case "$(uname)" in
