@@ -37,6 +37,7 @@ style = "yellow bold"
 [git_status]
 format = "[$all_status]($style) "
 style = "red bold"
+untracked = '.'
 
 [hostname]
 format = "[$hostname]($style) "
