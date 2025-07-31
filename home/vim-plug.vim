@@ -12,6 +12,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'takumiando/glacier.vim'
 Plug 'vim-scripts/gtags.vim'
 Plug 'previm/previm'
 Plug 'itchyny/lightline.vim'
@@ -19,5 +20,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-git'
+Plug 'chrisbra/Colorizer'
 
 call plug#end()
