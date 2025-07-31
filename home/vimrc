@@ -36,6 +36,7 @@ set helplang=en
 set laststatus=2
 set mouse=
 set noshowmode
+set termguicolors
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 inoremap <C-e> <esc>
@@ -75,3 +76,6 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.nix set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
+
+colorscheme glacier
+autocmd BufReadPost * ColorHighlight
