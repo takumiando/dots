@@ -6,8 +6,21 @@
 #
 
 [ -f /etc/os-release ] && source /etc/os-release
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+case "$ID" in
+    nixos)
+        ZSH_FZF_PLUGIN_DIR=/run/current-system/sw/share/fzf
+        ;;
+    arch)
+        ZSH_FZF_PLUGIN_DIR=/usr/share/fzf
+        ;;
+    *)
+        ZSH_FZF_PLUGIN_DIR=/usr/share/doc/fzf/examples
+        ;;
+esac
+
+[ -f "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh
+[ -f "$ZSH_FZF_PLUGIN_DIR"/completion.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/completion.zsh
 
 autoload -Uz compinit && compinit
 autoload -Uz promptinit && promptinit
