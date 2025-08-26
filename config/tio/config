@@ -1,0 +1,6 @@
+[default]
+baudrate = 115200
+databits = 8
+parity = none
+stopbits = 1
+color = 3
