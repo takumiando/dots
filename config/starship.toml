@@ -6,6 +6,7 @@ $git_branch\
 $git_state\
 $git_status\
 $line_break\
+$shell\
 $python\
 $nix_shell\
 $character\
@@ -54,3 +55,10 @@ format = '[+]($style)'
 style = 'yellow bold'
 detect_extensions = []
 detect_files = []
+
+[shell]
+format = '[$indicator]($style)'
+style = 'black bold'
+bash_indicator = '\$_ '
+zsh_indicator = ''
+disabled = false
