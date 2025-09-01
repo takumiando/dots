@@ -13,8 +13,8 @@ $character\
 """
 
 [character]
-success_symbol = "[➔](#ff6600 bold)"
-error_symbol = "[➔](#555555 bold)"
+success_symbol = "[➔](green bold)"
+error_symbol = "[➔](red bold)"
 
 [container]
 format = '[$name]($style) '
@@ -22,27 +22,27 @@ style = "#e95420 bold"
 
 [directory]
 format = "[$path]($style) "
-style = "#9daae2 bold"
+style = "cyan bold"
 truncation_length = 3
 truncation_symbol = ".../"
 truncate_to_repo = false
 
 [git_branch]
 format = "[$branch]($style)"
-style = "#555555 bold"
+style = "blue bold"
 
 [git_state]
 format = "[⚠]($style)"
-style = "#eed202 bold"
+style = "yellow bold"
 
 [git_status]
 format = "[$all_status]($style) "
-style = "#cc0000 bold"
+style = "red bold"
 untracked = '.'
 
 [hostname]
 format = "[$hostname]($style) "
-style = "#cc0000 bold"
+style = "red bold"
 ssh_only = true
 
 [nix_shell]
@@ -52,13 +52,13 @@ symbol = "*"
 
 [python]
 format = '[+]($style)'
-style = '#ffd43b bold'
+style = 'yellow bold'
 detect_extensions = []
 detect_files = []
 
 [shell]
 format = '[$indicator]($style)'
-style = '#4eaa25 bold'
+style = 'black bold'
 bash_indicator = '\$_ '
 zsh_indicator = ''
 disabled = false
