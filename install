@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")" || exit
 
-for conf in home/* config/* local/*
+for conf in $(exec find home/* config/* local/* -type f)
 do
     case "$conf" in
         home/*)
