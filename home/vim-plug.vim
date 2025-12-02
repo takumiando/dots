@@ -22,5 +22,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-git'
 Plug 'chrisbra/Colorizer'
+Plug 'ficd0/ashen.nvim'
 
 call plug#end()
