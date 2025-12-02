@@ -17,6 +17,7 @@ Plug 'vim-scripts/gtags.vim'
 Plug 'previm/previm'
 Plug 'itchyny/lightline.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-git'
