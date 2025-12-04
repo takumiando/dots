@@ -3,7 +3,7 @@
     email = takumi@spacecubics.com
     signingkey = 7B58A4A61813F3195B0FD31EF32AC641E32C1B8F
 [core]
-    editor = nvim
+    editor = $EDITOR
 [init]
     defaultBranch = main
 [push]
