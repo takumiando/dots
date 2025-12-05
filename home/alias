@@ -19,6 +19,7 @@ alias icat='chafa -f kitty'
 alias zstc='tar --zstd -cvf'
 alias zstx='tar --zstd -xvf'
 alias nix-shell='nix-shell --run "$SHELL"'
+alias g='git'
 
 case "$(uname)" in
     Darwin)
