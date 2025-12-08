@@ -33,6 +33,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ficd0/ashen.nvim'
 Plug 'github/copilot.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'LnL7/vim-nix'
 Plug 'previm/previm'
 Plug 'vim-scripts/gtags.vim'
 
