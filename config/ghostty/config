@@ -27,6 +27,7 @@ clipboard-paste-protection = false
 
 bell-features = no-system,no-audio,no-attention,no-title,no-border
 shell-integration = zsh
+term = xterm-256color
 
 keybind = super+\=new_split:right
 keybind = super+-=new_split:down
