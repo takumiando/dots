@@ -24,6 +24,7 @@ unfocused-split-opacity = 0.6
 link-url = true
 clipboard-paste-protection = false
 
+bell-features = no-system,no-audio,no-attention,no-title,no-border
 shell-integration = zsh
 
 keybind = super+\=new_split:right
