@@ -20,6 +20,7 @@ alias zstc='tar --zstd -cvf'
 alias zstx='tar --zstd -xvf'
 alias nix-shell='nix-shell --run "$SHELL"'
 alias g='git'
+alias gist='gh gist'
 
 case "$(uname)" in
     Darwin)
