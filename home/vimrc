@@ -77,4 +77,5 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
 
+autocmd FileType gitcommit setlocal textwidth=80 colorcolumn=81
 autocmd BufReadPost * ColorHighlight
