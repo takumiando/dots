@@ -3,6 +3,7 @@ $container\
 $hostname\
 $directory\
 $git_branch\
+$git_commit\
 $git_state\
 $git_status\
 $line_break\
@@ -28,15 +29,21 @@ truncation_symbol = ".../"
 truncate_to_repo = false
 
 [git_branch]
-format = "[$branch]($style)"
+format = "[$branch]($style) "
 style = "blue bold"
+only_attached = true
+
+[git_commit]
+format = "[$hash](blue bold)[$tag](yellow bold) "
+tag_disabled = false
+tag_symbol = ' '
 
 [git_state]
 format = "[⚠]($style)"
 style = "yellow bold"
 
 [git_status]
-format = "[$all_status]($style) "
+format = "[$all_status]($style)"
 style = "red bold"
 untracked = '.'
 
