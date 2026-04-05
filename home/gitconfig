@@ -31,7 +31,7 @@
 [credential]
     helper = store
 [alias]
-    l  = log --pretty=format:\"%C(green)%h %C(cyan)%ad%C(red)%d %C(reset)%s %C(blue)[%cn]\" --decorate --date=short
+    l  = log --pretty=format:\"%C(yellow)%h %C(cyan)%ad%C(red)%d %C(reset)%s %C(blue)[%cn]\" --decorate --date=short
     a  = add
     s  = status
     d  = diff
