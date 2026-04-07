@@ -1,14 +1,6 @@
 "" load plug setting
 source ~/.vim-plug.vim
 
-"" tmux setting
-augroup titlesettings
-    autocmd!
-    autocmd BufEnter * call system("tmux rename-window " . "'[vim] " . expand("%:t") . "'")
-    autocmd VimLeave * call system("tmux rename-window zsh")
-    autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
-augroup END
-
 set number
 set cursorline
 set ruler
@@ -78,4 +70,5 @@ augroup fileTypeIndent
 augroup END
 
 autocmd FileType gitcommit setlocal textwidth=80 colorcolumn=81
+autocmd FileType asciidoc setlocal textwidth=80 colorcolumn=81
 autocmd BufReadPost * ColorHighlight
