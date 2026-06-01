@@ -4,3 +4,5 @@ vte-terminal {
     padding: 50px 50px 50px 50px;
     -VteTerminal-inner-border: 50px 50px 50px 50px;
 }
+
+@import url("noctalia.css");
