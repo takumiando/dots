@@ -15,7 +15,7 @@
 [color "diff"]
     meta = white bold
     frag = black yellow
-    old = black bold
+    old = red bold
     new = green bold
 [diff]
     algorithm = histogram
