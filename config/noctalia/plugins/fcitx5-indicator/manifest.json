@@ -1,0 +1,18 @@
+{
+  "id": "fcitx5-indicator",
+  "name": "Fcitx5 Indicator",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "Takumi Ando",
+  "license": "MIT",
+  "description": "Show current fcitx5 input source",
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {}
+  }
+}
