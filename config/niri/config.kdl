@@ -16,6 +16,8 @@ input {
         accel-speed 0.0
         accel-profile "adaptive"
     }
+
+    focus-follows-mouse max-scroll-amount="10%"
 }
 
 output "eDP-1" {
@@ -249,6 +251,4 @@ switch-events {
 
 include optional=true "local.kdl"
 include optional=true "noctalia.kdl"
-
-include "./noctalia.kdl"
-
+include optional=true "monitor.kdl"
