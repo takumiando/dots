@@ -45,6 +45,7 @@
     gz   = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.gz"
     zst  = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".tar.zst"
     zip  = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"$TOPDIR\".zip"
+    release = !"TOPDIR=$(basename $(git rev-parse --show-toplevel)) && REV=$(git describe) && git archive HEAD --prefix=\"$TOPDIR\"/ --output=\"${TOPDIR}-${REV}\".tar.gz"
     wipe = !"for MODULE in $(git rev-parse --show-toplevel; git submodule | awk '{print $2}'); do printf \"Cleaning %s...\n\" \"$MODULE\"; pushd \"$MODULE\" > /dev/null && git clean -dfx && popd > /dev/null; done"
 [includeIf "gitdir:~/Work/"]
     path = ~/.gitconfig-work
@@ -53,3 +54,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[http]
+	sslVerify = false
