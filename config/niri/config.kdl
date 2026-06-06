@@ -227,7 +227,7 @@ binds {
 
     Mod+C { center-column; }
 
-    Mod+Ctrl+C { center-visible-columns; }
+    Mod+Ctrl+C { spawn-sh "hyprpicker -a"; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
