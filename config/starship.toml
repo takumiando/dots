@@ -18,8 +18,9 @@ success_symbol = "[➔](green bold)"
 error_symbol = "[➔](red bold)"
 
 [container]
-format = '[$name]($style) '
+format = '[$symbol $name]($style) '
 style = "#e95420 bold"
+symbol = "⬢"
 
 [directory]
 format = "[$path]($style) "
@@ -48,8 +49,8 @@ style = "red bold"
 untracked = '.'
 
 [hostname]
-format = "[$hostname]($style) "
-style = "red bold"
+format = "[>_ $hostname]($style) "
+style = "green bold"
 ssh_only = true
 
 [nix_shell]
@@ -58,7 +59,7 @@ style = "#405d99 bold"
 symbol = "*"
 
 [python]
-format = '[+]($style)'
+format = '[π]($style)'
 style = 'yellow bold'
 detect_extensions = []
 detect_files = []
