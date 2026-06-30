@@ -41,7 +41,9 @@ layout {
         proportion 0.66667
     }
 
-    default-column-width { proportion 1.0; }
+    default-column-width {
+        proportion 0.5
+    }
 
     focus-ring {
         off
@@ -261,3 +263,6 @@ switch-events {
 include optional=true "local.kdl"
 include optional=true "noctalia.kdl"
 include optional=true "monitor.kdl"
+
+include "./noctalia.kdl"
+
