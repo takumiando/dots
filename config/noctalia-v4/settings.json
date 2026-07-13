@@ -19,7 +19,7 @@
         "overviewLayer": false,
         "pinnedApps": [
         ],
-        "position": "top_left",
+        "position": "top_center",
         "screenshotAnnotationTool": "",
         "showCategories": true,
         "showIconBackground": false,
@@ -44,7 +44,7 @@
         "autoShowDelay": 150,
         "backgroundOpacity": 0.93,
         "barType": "simple",
-        "capsuleColorKey": "error",
+        "capsuleColorKey": "tertiary",
         "capsuleOpacity": 1,
         "contentPadding": 2,
         "density": "spacious",
@@ -237,7 +237,7 @@
         "predefinedScheme": "ZDF",
         "schedulingMode": "off",
         "syncGsettings": true,
-        "useWallpaperColors": false
+        "useWallpaperColors": true
     },
     "controlCenter": {
         "cards": [
@@ -655,7 +655,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "monospace",
         "fontFixedScale": 1,
-        "panelBackgroundOpacity": 1,
+        "panelBackgroundOpacity": 0.8,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",

@@ -1,0 +1,78 @@
+config_version = 2
+
+[bar.default]
+start = [ "launcher" ]
+center = [ "workspaces" ]
+end = [ "media", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
+margin_ends = 0
+position = "left"
+radius_bottom_left = 0
+radius_top_left = 0
+scale = 1.2
+thickness = 50
+widget_spacing = 14
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+address = "Sapporo"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+
+[shell]
+niri_overview_type_to_launch_enabled = true
+
+    [shell.panel]
+    open_near_click_control_center = true
+
+[theme]
+    [theme.templates]
+    builtin_ids = [ "gtk3", "gtk4", "ghostty", "niri" ]
+    community_ids = [ "yazi" ]
+
+[wallpaper]
+directory = "/home/takumi/Pictures/wallpapers"
+
+[backdrop]
+enabled = true
+blur_intensity = 1.0
+tint_intensity = 0.5
+
+[widget.battery]
+display_mode = "graphic"
+scale = 0.8
+show_label = false
+
+[widget.clipboard]
+enabled = false
+
+[widget.launcher]
+color = "primary"
+glyph = "heart-filled"
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+display = "none"
