@@ -91,6 +91,14 @@ window-rule {
     }
 }
 
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+
+    background-effect {
+        blur true
+    }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -256,7 +264,7 @@ binds {
 
 switch-events {
     lid-close {
-        spawn "noctalia" "msg" "sesison" "lock"
+        spawn "noctalia" "msg" "session" "lock-and-suspend"
     }
 }
 
