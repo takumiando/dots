@@ -271,6 +271,3 @@ switch-events {
 include optional=true "local.kdl"
 include optional=true "noctalia.kdl"
 include optional=true "monitor.kdl"
-
-include "./noctalia.kdl"
-
