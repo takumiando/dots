@@ -1,7 +1,8 @@
 title = Termial
 
 theme = noctalia
-background = #000000
+background-blur = true
+background-opacity = 0.6
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-family = "Noto Sans CJK JP"
