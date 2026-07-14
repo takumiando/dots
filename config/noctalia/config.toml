@@ -41,6 +41,8 @@ schema_version = 2
 niri_overview_type_to_launch_enabled = true
 
     [shell.panel]
+    borders = false
+    transparency_mode = "soft"
     open_near_click_control_center = true
 
 [theme]
@@ -76,3 +78,6 @@ show_label = false
 
 [widget.workspaces]
 display = "none"
+
+ [widget.brightness]
+ show_label = false
