@@ -1,9 +1,9 @@
 config_version = 2
 
 [bar.default]
-start = [ "launcher" ]
+start = [ "launcher", "cpu", "ram", "temp" ]
 center = [ "workspaces" ]
-end = [ "media", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
+end = [ "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
 margin_ends = 0
 position = "left"
 radius_bottom_left = 0
@@ -79,5 +79,14 @@ show_label = false
 [widget.workspaces]
 display = "none"
 
- [widget.brightness]
- show_label = false
+[widget.brightness]
+show_label = false
+
+[widget.ram]
+show_label = false
+
+[widget.cpu]
+show_label = false
+
+[widget.temp]
+show_label = false
