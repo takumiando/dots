@@ -3,7 +3,7 @@ config_version = 2
 [bar.default]
 start = [ "launcher", "cpu", "ram", "temp" ]
 center = [ "workspaces" ]
-end = [ "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
+end = [ "notifications", "takumi/fcitx5-indicator", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
 margin_ends = 0
 position = "left"
 radius_bottom_left = 0
@@ -58,6 +58,14 @@ enabled = true
 blur_intensity = 1.0
 tint_intensity = 0.5
 
+[plugins]
+enabled = [ "takumi/fcitx5-indicator" ]
+
+    [[plugins.source]]
+    kind = "path"
+    location = "/home/takumi/.config/noctalia/plugins"
+    name = "local"
+
 [widget.battery]
 display_mode = "graphic"
 scale = 0.8
@@ -90,3 +98,6 @@ show_label = false
 
 [widget.temp]
 show_label = false
+
+[widget.indicator]
+type = "takumi/fcitx5-indicator:indicator"
