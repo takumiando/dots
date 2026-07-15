@@ -3,7 +3,7 @@ config_version = 2
 [bar.default]
 start = [ "launcher", "cpu", "ram", "temp" ]
 center = [ "workspaces" ]
-end = [ "notifications", "takumi/fcitx5-indicator", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
+end = [ "indicator", "network", "bluetooth", "volume", "brightness", "battery", "clock", "notifications" ]
 margin_ends = 0
 position = "left"
 radius_bottom_left = 0
@@ -80,8 +80,8 @@ show_label = false
 enabled = false
 
 [widget.launcher]
-color = "primary"
-glyph = "heart-filled"
+color = "tertiary"
+glyph = "activity-heartbeat"
 
 [widget.network]
 show_label = false
