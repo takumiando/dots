@@ -4,8 +4,6 @@ local querying = false
 local function updateLabel(name)
 	name = noctalia.string.trim(name or "")
 
-	noctalia.log("fcitx5 im: " .. name)
-
 	if name == "mozc" then
 		label = "あ"
 	elseif name:sub(1, 9) == "keyboard-" then
