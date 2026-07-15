@@ -11,6 +11,7 @@ radius_top_left = 0
 scale = 1.2
 thickness = 50
 widget_spacing = 14
+shadow = false
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -40,9 +41,13 @@ schema_version = 2
 [shell]
 niri_overview_type_to_launch_enabled = true
 
+    [shell.launcher]
+    show_icons = false
+
     [shell.panel]
     borders = false
-    transparency_mode = "soft"
+    shadow = false
+    transparency_mode = "solid"
     open_near_click_control_center = true
 
 [theme]
@@ -51,7 +56,7 @@ niri_overview_type_to_launch_enabled = true
     community_ids = [ "yazi" ]
 
 [wallpaper]
-directory = "/home/takumi/Pictures/wallpapers"
+directory = "/home/takumi/Pictures/Wallpapers"
 
 [backdrop]
 enabled = true
