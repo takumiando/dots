@@ -94,6 +94,10 @@ stty stop undef
 [ -e "$HOME"/.alias ] && source "$HOME"/.alias
 [ -e "$HOME"/.west.zsh ] &&  source "$HOME"/.west.zsh
 
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 else
