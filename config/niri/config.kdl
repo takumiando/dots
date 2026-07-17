@@ -72,11 +72,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
 }
 
-layer-rule {
-    match namespace="^noctalia-backdrop"
-    place-within-backdrop true
-}
-
 window-rule {
     geometry-corner-radius 14
     clip-to-geometry true
@@ -88,14 +83,6 @@ window-rule {
         offset x=0 y=6
         color "#00000055"
         inactive-color "#00000030"
-    }
-}
-
-window-rule {
-    match app-id=r#"^com\.mitchellh\.ghostty$"#
-
-    background-effect {
-        blur true
     }
 }
 
