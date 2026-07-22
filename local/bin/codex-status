@@ -31,7 +31,7 @@ file=$(
 )
 
 if [ -z "$file" ]; then
-	result='Codex: --'
+	result=''
 else
 	event=$(
 		tac "$file" 2>/dev/null |
