@@ -23,7 +23,6 @@ input {
 output "eDP-1" {
     transform "normal"
     scale 1
-    variable-refresh-rate
 }
 
 cursor {
