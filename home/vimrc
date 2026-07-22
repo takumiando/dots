@@ -1,6 +1,7 @@
-"" load plug setting
+" Plugins
 source ~/.vim-plug.vim
 
+" Editor
 set number
 set cursorline
 set ruler
@@ -31,6 +32,7 @@ set noshowmode
 set termguicolors
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
+" Key mappings
 inoremap <C-e> <esc>
 inoremap <C-w> <C-p>
 noremap <C-f> :Files<CR>
@@ -45,28 +47,30 @@ nnoremap <S-s> :rv!<CR>
 nnoremap <leader>h :syntax keyword TempHighlight <C-r><C-w><CR>:highlight TempHighlight term=reverse cterm=reverse gui=reverse<CR>
 nnoremap <leader>c :syntax clear TempHighlight<CR>
 
+" Plugin settings
 let g:previm_open_cmd = 'xdg-open'
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
 let g:previm_show_header = 0
 
+" File types
 augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.c set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.cpp set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead Makefile set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.h set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.dts* set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.overlay set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-    autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-    autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-    autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-    autocmd BufNewFile,BufRead Kconfig set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab softtabstop=0
-    autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd BufNewFile,BufRead *.md set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd BufNewFile,BufRead *.nix set filetype=nix tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
+  autocmd!
+  autocmd BufNewFile,BufRead *.c set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.cpp set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead Makefile set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.h set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.dts* set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.overlay set filetype=dts tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd BufNewFile,BufRead *.sh set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd BufNewFile,BufRead *shrc set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd BufNewFile,BufRead Kconfig set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  autocmd BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd BufNewFile,BufRead *.md set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd BufNewFile,BufRead *.nix set filetype=nix tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd BufNewFile,BufRead * nested if @% !~ '\.' && getline(1) !~ '^#!.*sh' | set tabstop=4 shiftwidth=4 softtabstop=4 expandtab filetype=sh | endif
 augroup END
 
 autocmd FileType gitcommit setlocal textwidth=80 colorcolumn=81

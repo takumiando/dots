@@ -1,7 +1,7 @@
 let s:plug_url       = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let s:vim_plug_path  = expand('~/.vim/autoload/plug.vim')
 let s:nvim_plug_path = expand('~/.local/share/nvim/site/autoload/plug.vim')
-let s:need_plug_install = 0
+let s:need_plug_install  = 0
 
 if empty(glob(s:vim_plug_path))
   silent execute '!curl -fLo '

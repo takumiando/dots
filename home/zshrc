@@ -7,32 +7,41 @@
 
 [ -f /etc/os-release ] && source /etc/os-release
 
-case "$ID" in
+# fzf
+if command -v fzf >/dev/null 2>&1 && fzf --zsh >/dev/null 2>&1; then
+  source <(fzf --zsh)
+else
+  case "$ID" in
     nixos)
-        ZSH_FZF_PLUGIN_DIR=/run/current-system/sw/share/fzf
-        ;;
+      ZSH_FZF_PLUGIN_DIR=/run/current-system/sw/share/fzf
+      ;;
     arch)
-        ZSH_FZF_PLUGIN_DIR=/usr/share/fzf
-        ;;
+      ZSH_FZF_PLUGIN_DIR=/usr/share/fzf
+      ;;
     *)
-        ZSH_FZF_PLUGIN_DIR=/usr/share/doc/fzf/examples
-        ;;
-esac
+      ZSH_FZF_PLUGIN_DIR=/usr/share/doc/fzf/examples
+      ;;
+  esac
 
-[ -f "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh
-[ -f "$ZSH_FZF_PLUGIN_DIR"/completion.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/completion.zsh
+  [ -f "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/key-bindings.zsh
+  [ -f "$ZSH_FZF_PLUGIN_DIR"/completion.zsh ] && source "$ZSH_FZF_PLUGIN_DIR"/completion.zsh
+fi
 
+# Completion and prompt
 autoload -Uz compinit
 ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump"
+
 if [[ ! -f "$ZSH_COMPDUMP" || $(find "$ZSH_COMPDUMP" -mtime +1 2>/dev/null) ]]; then
   compinit -d "$ZSH_COMPDUMP"
 else
   compinit -C -d "$ZSH_COMPDUMP"
 fi
+
 autoload -Uz promptinit && promptinit
 autoload -Uz colors && colors
 autoload -Uz vcs_info
 
+# Shell options
 setopt extended_history
 setopt histignorealldups
 setopt sharehistory
@@ -44,6 +53,7 @@ setopt list_types
 setopt auto_param_slash
 setopt prompt_subst
 
+# History and colors
 export LS_COLORS='di=01;34:ln=01;36:so=01;33:pi=01;32:ex=01;31:bd=42;30:cd=44;30:su=41;30:sg=46;30:tw=42;34:ow=44;32'
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
@@ -60,26 +70,28 @@ export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 export FZF_CTRL_T_OPTS="--prompt='? '"
 
-precmd () {
-    vcs_info
+# Widgets and hooks
+precmd() {
+  vcs_info
 }
 
-history-all () {
-    history -E 1
+history-all() {
+  history -E 1
 }
 
-fancy-ctrl-z () {
-    if [ "${#BUFFER}" -eq 0 ]; then
-        BUFFER="fg"
-        zle accept-line
-    else
-        zle push-input
-        zle clear-screen
-    fi
+fancy-ctrl-z() {
+  if [ "${#BUFFER}" -eq 0 ]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
 }
 
 zle -N fancy-ctrl-z
 
+# Key bindings
 bindkey -d
 bindkey -e
 bindkey "^[[1;5C" forward-word
@@ -91,13 +103,15 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 stty stop undef
 
+# Local configuration
 [ -e "$HOME"/.alias ] && source "$HOME"/.alias
-[ -e "$HOME"/.west.zsh ] &&  source "$HOME"/.west.zsh
+[ -e "$HOME"/.west.zsh ] && source "$HOME"/.west.zsh
 
 if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
+# Prompt
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 else
