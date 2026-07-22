@@ -1,0 +1,90 @@
+#!/bin/sh
+
+cache_ttl=${CODEX_STATUS_CACHE_TTL:-10}
+runtime_dir=${XDG_RUNTIME_DIR:-${TMPDIR:-/tmp}}
+cache_file="$runtime_dir/codex-status-$(id -u)"
+now=$(date +%s)
+
+if [ -r "$cache_file" ]; then
+	mtime=$(stat -c %Y "$cache_file" 2>/dev/null || printf '0')
+
+	case "$mtime" in
+	''|*[!0-9]*)
+		mtime=0
+		;;
+	esac
+
+	if [ $((now - mtime)) -lt "$cache_ttl" ]; then
+		cat "$cache_file"
+		exit
+	fi
+fi
+
+session_dir="${CODEX_HOME:-$HOME/.codex}/sessions"
+
+file=$(
+	find "$session_dir" -type f -name 'rollout-*.jsonl' \
+		-printf '%T@ %p\n' 2>/dev/null |
+	sort -nr |
+	head -n 1 |
+	cut -d' ' -f2-
+)
+
+if [ -z "$file" ]; then
+	result='Codex: --'
+else
+	event=$(
+		tac "$file" 2>/dev/null |
+		grep -m1 '"type":"token_count"'
+	)
+
+	if [ -z "$event" ]; then
+		result=''
+	else
+		result=$(
+			printf '%s\n' "$event" |
+			jq -r '
+				def percent($value):
+					if $value == null then "--"
+					else ($value | round | tostring) + "%"
+					end;
+
+				def limit_percent($limits; $minutes):
+					[$limits.primary, $limits.secondary]
+					| map(select(.window_minutes == $minutes))
+					| first
+					| .used_percent;
+
+				.payload as $p |
+				$p.info as $info |
+				$p.rate_limits as $limits |
+
+				($info.last_token_usage.total_tokens //
+				 $info.total_token_usage.total_tokens) as $tokens |
+				$info.model_context_window as $window |
+
+				(if $tokens != null and $window != null and $window > 0
+				 then (($tokens * 100 / $window) | round | tostring) + "%"
+				 else "--"
+				 end) as $context |
+
+				"ctx:" + $context +
+				" wk:" + percent(limit_percent($limits; 10080)) +
+				" 5h:" + percent(limit_percent($limits; 300))
+			' 2>/dev/null
+		)
+
+		[ -n "$result" ] || result='Codex: --'
+	fi
+fi
+
+umask 077
+tmp="${cache_file}.$$"
+trap 'rm -f "$tmp"' EXIT HUP INT TERM
+
+if printf '%s\n' "$result" >"$tmp"; then
+	mv -f "$tmp" "$cache_file"
+fi
+
+trap - EXIT HUP INT TERM
+printf '%s\n' "$result"
