@@ -2,15 +2,17 @@
 
 cd "$(dirname "$0")" || exit
 
-for conf in $(exec find home/* config/* local/* codex/* -type f)
+for conf in $(exec find -- */ -type f)
 do
     case "$conf" in
-        home/*)
-            ln -snfv "$PWD"/"$conf" ~/."$(basename "$conf")"
+        ./img/*)
+            ;;
+        ./home/*)
+            ln -snfv "$(realpath "$conf")" ~/."$(basename "$conf")"
             ;;
         *)
             mkdir -p ~/."$(dirname "$conf")"
-            ln -snfv "$PWD"/"$conf" ~/."$conf"
+            ln -snfv "$(realpath "$conf")" ~/."$conf"
             ;;
     esac
 done
