@@ -1,0 +1,43 @@
+#!/bin/sh
+
+set -eu
+
+kind=${1:-}
+
+case "$kind" in
+    cpu)
+        cores=$(getconf _NPROCESSORS_ONLN 2>/dev/null || printf '1')
+        average=$(cut -d ' ' -f 1 /proc/loadavg)
+        percent=$(awk -v average="$average" -v cores="$cores" 'BEGIN { p = average * 100 / cores; if (p > 100) p = 100; printf "%.0f", p }')
+        tooltip="CPU load: ${average} / ${cores} cores"
+        ;;
+    memory)
+        total=$(awk '/^MemTotal:/ { print $2 }' /proc/meminfo)
+        available=$(awk '/^MemAvailable:/ { print $2 }' /proc/meminfo)
+        percent=$(( (total - available) * 100 / total ))
+        tooltip="Memory: ${percent}%"
+        ;;
+    temperature)
+        temp=
+        for zone in /sys/class/thermal/thermal_zone*/temp; do
+            [ -r "$zone" ] || continue
+            value=$(cat "$zone")
+            [ "$value" -gt 0 ] 2>/dev/null || continue
+            [ -z "$temp" ] || [ "$value" -gt "$temp" ] || continue
+            temp=$value
+        done
+        if [ -n "$temp" ]; then
+            percent=$((temp / 1000))
+            [ "$percent" -le 100 ] || percent=100
+            tooltip="Temperature: $((temp / 1000))°C"
+        else
+            percent=0
+            tooltip="Temperature unavailable"
+        fi
+        ;;
+    *)
+        exit 2
+        ;;
+esac
+
+printf '{"text":"%s%%","percentage":%s,"tooltip":"%s"}\n' "$percent" "$percent" "$tooltip"

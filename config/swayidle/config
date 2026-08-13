@@ -1,0 +1,6 @@
+timeout 600 'lock-screen'
+timeout 630 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'
+timeout 1800 'systemctl suspend'
+before-sleep 'lock-screen'
+lock 'lock-screen'
+after-resume 'niri msg action power-on-monitors'

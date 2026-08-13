@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -ne 1 ] || [ ! -f "$1" ]; then
+    echo "usage: wallpaper IMAGE" >&2
+    exit 2
+fi
+
+image=$(realpath "$1")
+cache_home=${XDG_CACHE_HOME:-"$HOME/.cache"}
+state_dir="$cache_home/matugen"
+data_home=${XDG_DATA_HOME:-"$HOME/.local/share"}
+
+mkdir -p "$state_dir" "$data_home/vicinae/themes"
+
+if command -v awww-daemon >/dev/null 2>&1 && ! awww query >/dev/null 2>&1; then
+    awww-daemon >/dev/null 2>&1 &
+    sleep 0.2
+fi
+
+matugen image "$image" -m dark
+printf '%s\n' "$image" > "$state_dir/current-wallpaper"

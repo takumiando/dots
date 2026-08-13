@@ -1,0 +1,5 @@
+@define-color osd_bg {{colors.surface_container.default.hex}};
+@define-color osd_fg {{colors.on_surface.default.hex}};
+@define-color osd_track {{colors.surface_container_highest.default.hex}};
+@define-color osd_accent {{colors.primary.default.hex}};
+@define-color osd_border {{colors.outline_variant.default.hex}};

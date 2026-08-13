@@ -1,0 +1,35 @@
+#!/bin/sh
+
+cache_home=${XDG_CACHE_HOME:-"$HOME/.cache"}
+data_home=${XDG_DATA_HOME:-"$HOME/.local/share"}
+state_dir="$cache_home/matugen"
+wallpaper_file="$state_dir/current-wallpaper"
+
+mkdir -p "$state_dir" "$data_home/vicinae/themes"
+
+if command -v awww-daemon >/dev/null 2>&1; then
+    awww-daemon >/dev/null 2>&1 &
+    sleep 0.2
+fi
+
+if command -v matugen >/dev/null 2>&1; then
+    if [ -r "$wallpaper_file" ]; then
+        IFS= read -r image < "$wallpaper_file"
+    else
+        image=
+    fi
+
+    if [ -n "$image" ] && [ -f "$image" ]; then
+        matugen image "$image" -m dark
+    elif [ ! -f "$state_dir/waybar.css" ]; then
+        matugen color hex "#6750a4" -m dark
+    fi
+fi
+
+command -v vicinae >/dev/null 2>&1 && vicinae server --replace >/dev/null 2>&1 &
+command -v mako >/dev/null 2>&1 && mako >/dev/null 2>&1 &
+command -v swayosd-server >/dev/null 2>&1 && swayosd-server >/dev/null 2>&1 &
+command -v swayidle >/dev/null 2>&1 && swayidle -w >/dev/null 2>&1 &
+command -v waybar >/dev/null 2>&1 && waybar >/dev/null 2>&1 &
+
+wait

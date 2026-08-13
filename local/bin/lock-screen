@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cache_home=${XDG_CACHE_HOME:-"$HOME/.cache"}
+generated="$cache_home/matugen/swaylock.conf"
+
+if pgrep -x swaylock >/dev/null 2>&1; then
+    exit 0
+fi
+
+if [ -f "$generated" ]; then
+    exec swaylock -f -C "$generated"
+fi
+
+exec swaylock -f -C "$HOME/.config/swaylock/config"

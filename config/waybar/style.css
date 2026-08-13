@@ -1,0 +1,125 @@
+@import url("../../.cache/matugen/waybar.css");
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  min-width: 0;
+  box-shadow: none;
+  text-shadow: none;
+  font-family: "Symbols Nerd Font Mono", "Inter", sans-serif;
+  font-size: 16px;
+}
+
+window#waybar {
+  background: @background;
+  color: @foreground;
+  border: 2px solid @outline;
+}
+
+tooltip {
+  background: @surface_high;
+  color: @foreground;
+  border: 1px solid @outline;
+  border-radius: 8px;
+}
+
+#custom-system-monitor,
+#custom-cpu,
+#custom-memory,
+#custom-temperature,
+#language,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#clock,
+#custom-notification {
+  padding: 0;
+  margin: 0;
+}
+
+#custom-system-monitor {
+  min-height: 42px;
+  color: @primary;
+  font-size: 17px;
+}
+
+#custom-cpu,
+#custom-memory,
+#custom-temperature {
+  min-height: 54px;
+}
+
+#custom-cpu label,
+#custom-memory label,
+#custom-temperature label {
+}
+
+#workspaces {
+  background: transparent;
+}
+
+#workspaces button {
+  min-width: 20px;
+  min-height: 20px;
+  margin: 2px 14px;
+  padding: 0;
+  border-radius: 999px;
+  background: @secondary;
+  color: transparent;
+  font-size: 0;
+}
+
+#workspaces button.empty {
+  background: @muted;
+}
+
+#workspaces button.active {
+  min-height: 42px;
+  background: @primary;
+}
+
+#workspaces button.urgent {
+  background: @error;
+}
+
+#language,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-notification {
+  min-height: 41px;
+}
+
+#language {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#pulseaudio.muted {
+  color: @error;
+}
+
+#battery.warning {
+  color: @secondary;
+}
+
+#battery.critical:not(.charging) {
+  color: @error;
+}
+
+#clock {
+  min-height: 68px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+}
+
+#custom-notification {
+  min-height: 47px;
+  font-size: 17px;
+}

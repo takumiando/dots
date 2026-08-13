@@ -1,0 +1,2 @@
+# The generated wallpaper and colors live outside the repository.
+# Use `lock-screen`; it selects ~/.cache/matugen/swaylock.conf when available.

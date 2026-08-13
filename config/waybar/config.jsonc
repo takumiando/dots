@@ -1,0 +1,144 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": 49,
+  "spacing": 0,
+  "fixed-center": true,
+  "exclusive": true,
+
+  "modules-left": [
+    "custom/system-monitor",
+    "custom/cpu",
+    "custom/memory",
+    "custom/temperature"
+  ],
+  "modules-center": [
+    "niri/workspaces"
+  ],
+  "modules-right": [
+    "niri/language",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "clock",
+    "custom/notification"
+  ],
+
+  "custom/system-monitor": {
+    "format": "",
+    "tooltip-format": "System Monitor",
+    "on-click": "ghostty -e btop"
+  },
+
+  "custom/cpu": {
+    "exec": "$HOME/.config/waybar/sysmon cpu",
+    "restart-interval": 2,
+    "return-type": "json",
+    "format": "{text}\n{icon}",
+    "format-icons": [
+      "▁", "▂", "▄", "▆", "█"
+    ]
+  },
+
+  "custom/memory": {
+    "exec": "$HOME/.config/waybar/sysmon memory",
+    "restart-interval": 2,
+    "return-type": "json",
+    "format": "{text}\n{icon}",
+    "format-icons": [
+      "▁", "▂", "▄", "▆", "█"
+    ]
+  },
+
+  "custom/temperature": {
+    "exec": "$HOME/.config/waybar/sysmon temperature",
+    "restart-interval": 2,
+    "return-type": "json",
+    "format": "{text}\n{icon}",
+    "format-icons": [
+      "▁", "▂", "▄", "▆", "█"
+    ]
+  },
+
+  "niri/workspaces": {
+    "format": "",
+    "on-scroll-up": "niri msg action focus-workspace-up",
+    "on-scroll-down": "niri msg action focus-workspace-down"
+  },
+
+  "niri/language": {
+    "format": "{}",
+    "format-en": "A",
+    "format-ja": "あ"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-linked": "󰈀",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid}\n{signalStrength}% · {ipaddr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "",
+    "on-click": "blueman-manager"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-bluetooth": "{icon}",
+    "format-bluetooth-muted": "󰖁",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "swayosd-client --output-volume +5 --max-volume 100",
+    "on-scroll-down": "swayosd-client --output-volume -5"
+  },
+
+  "backlight": {
+    "format": "",
+    "tooltip-format": "Brightness: {percent}%",
+    "on-scroll-up": "swayosd-client --brightness +5",
+    "on-scroll-down": "swayosd-client --brightness -5"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-full": "󰁹",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "clock": {
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%Y-%m-%d %A}"
+  },
+
+  "custom/notification": {
+    "return-type": "json",
+    "exec-if": "command -v makoctl",
+    "exec": "$HOME/.config/waybar/scripts/mako-status.sh",
+    "interval": 2,
+    "on-click": "makoctl restore",
+    "on-click-middle": "makoctl mode -t do-not-disturb",
+    "on-click-right": "makoctl dismiss --all",
+    "escape": true
+  }
+}

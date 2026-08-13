@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if ! pgrep -x swaylock >/dev/null 2>&1; then
+    cache_home=${XDG_CACHE_HOME:-"$HOME/.cache"}
+    generated="$cache_home/matugen/swaylock.conf"
+    if [ -f "$generated" ]; then
+        swaylock --daemonize -C "$generated"
+    else
+        swaylock --daemonize -C "$HOME/.config/swaylock/config"
+    fi
+fi
+
+exec systemctl suspend

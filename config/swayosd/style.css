@@ -1,0 +1,40 @@
+@import url("../../.cache/matugen/swayosd.css");
+
+window#osd {
+  border: 1px solid @osd_border;
+  border-radius: 999px;
+  background: alpha(@osd_bg, 0.94);
+}
+
+window#osd #container {
+  margin: 16px;
+}
+
+window#osd image,
+window#osd label {
+  color: @osd_fg;
+}
+
+window#osd progressbar,
+window#osd segmentedprogress {
+  min-height: 7px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+}
+
+window#osd trough,
+window#osd segment {
+  min-height: inherit;
+  border: none;
+  border-radius: inherit;
+  background: @osd_track;
+}
+
+window#osd progress,
+window#osd segment.active {
+  min-height: inherit;
+  border: none;
+  border-radius: inherit;
+  background: @osd_accent;
+}

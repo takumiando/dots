@@ -5,4 +5,4 @@ vte-terminal {
     -VteTerminal-inner-border: 50px 50px 50px 50px;
 }
 
-@import url("noctalia.css");
+@import url("../../.cache/matugen/gtk.css");

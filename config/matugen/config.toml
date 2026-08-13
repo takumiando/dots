@@ -1,0 +1,45 @@
+[config]
+
+[config.wallpaper]
+command = "awww"
+arguments = ["img", "--transition-type", "grow", "--transition-duration", "1.2", "--transition-fps", "60"]
+set = true
+
+[templates.niri]
+input_path = "~/.config/matugen/templates/niri.kdl"
+output_path = "~/.cache/matugen/niri.kdl"
+post_hook = "niri msg action load-config-file || true"
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css"
+output_path = "~/.cache/matugen/waybar.css"
+post_hook = "pkill -SIGUSR2 waybar || true"
+
+[templates.ghostty]
+input_path = "~/.config/matugen/templates/ghostty.conf"
+output_path = "~/.cache/matugen/ghostty.conf"
+post_hook = "pkill -SIGUSR2 ghostty || true"
+
+[templates.vicinae]
+input_path = "~/.config/matugen/templates/vicinae.toml"
+output_path = "~/.local/share/vicinae/themes/matugen.toml"
+post_hook = "vicinae theme set matugen || true"
+
+[templates.mako]
+input_path = "~/.config/matugen/templates/mako.conf"
+output_path = "~/.cache/matugen/mako.conf"
+post_hook = "makoctl reload || true"
+
+[templates.swayosd]
+input_path = "~/.config/matugen/templates/swayosd.css"
+output_path = "~/.cache/matugen/swayosd.css"
+post_hook = "pkill -x swayosd-server || true; swayosd-server >/dev/null 2>&1 &"
+
+[templates.swaylock]
+input_path = "~/.config/matugen/templates/swaylock.conf"
+output_path = "~/.cache/matugen/swaylock.conf"
+
+[templates.gtk]
+input_path = "~/.config/matugen/templates/gtk.css"
+output_path = "~/.cache/matugen/gtk.css"
+post_hook = "reload-gtk-theme || true"
