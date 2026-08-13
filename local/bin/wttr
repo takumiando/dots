@@ -1,0 +1,10 @@
+#!/bin/sh
+
+URL=https://wttr.in
+CITY=sapporo
+
+if [ ! -z $1 ]; then
+    CITY=$1
+fi
+
+curl $URL/$CITY

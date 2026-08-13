@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ -z "$AWS_REGION" ]; then
+    AWS_REGION="us-west-2"
+fi
+
+URL="https://${AWS_REGION}.webclient.amazonworkspaces.com/registration"
+
+if [ -z "$CHROME" ]; then
+    for CHROME in chromium chromium-browser google-chrome-stable google-chrome
+    do
+        if command -v "$CHROME" > /dev/null 2>&1; then
+            break
+        fi
+    done
+fi
+
+"$CHROME" \
+    --app="$URL" \
+    --disable-features=TranslateUI \
+    --disable-session-crashed-bubble \
+    --noerrdialogs \
+    --disable-infobars \
+    --disable-extensions \
+    --disable-sync \
+    --disable-default-apps \
+    --no-first-run \
+    --no-default-browser-check \
+    --disable-component-update \
+    --disable-background-networking

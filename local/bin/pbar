@@ -1,0 +1,112 @@
+#!/bin/sh
+
+TITLE=""
+MESSAGE=""
+CHAR="█"
+PROMPT=""
+PROGRESS=0
+COLOR=""
+
+usage () {
+    cat << EOF
+Usage: COMMAND | ${0##*/} [-b BAR] [-p PROMPT] [-t TITLE] [-c COLOR]...
+EOF
+}
+
+pcolor () {
+    COLOR="$1"
+    shift
+
+    case "$COLOR" in
+        black)
+            printf "\033[30m%s\033[m" "$@"
+            ;;
+        red)
+            printf "\033[31m%s\033[m" "$@"
+            ;;
+        green)
+            printf "\033[32m%s\033[m" "$@"
+            ;;
+        yellow)
+            printf "\033[33m%s\033[m" "$@"
+            ;;
+        blue)
+            printf "\033[34m%s\033[m" "$@"
+            ;;
+        magenta)
+            printf "\033[35m%s\033[m" "$@"
+            ;;
+        cyan)
+            printf "\033[36m%s\033[m" "$@"
+            ;;
+        white)
+            printf "\033[37m%s\033[m" "$@"
+            ;;
+        *)
+            printf "%s" "$@"
+            ;;
+    esac
+}
+
+if [ ! -p "/dev/stdin" ]; then
+    usage
+    exit 1
+fi
+
+while [ $# -gt 0 ]
+do
+    ARG="$1"
+    shift
+    case "$ARG" in
+        -c)
+            if [ -n "$1" ]; then
+                COLOR="$1"
+            fi
+            shift
+            ;;
+        -b)
+            if [ -n "$1" ]; then
+                CHAR=$(printf "%s" "$1" | fold -s1 | head -n 1)
+            fi
+            shift
+            ;;
+        -p)
+            if [ -n "$1" ]; then
+                PROMPT=$(printf "%s" "$1" | fold -s1 | head -n 1)
+            fi
+            shift
+            ;;
+        -t)
+            TITLE="$1: "
+            shift
+            ;;
+        *)
+            ;;
+    esac
+done
+
+printf "\n\n"
+
+while read -r LINE
+do
+    if printf "%s" "$LINE" | grep -qE '^[0-9]+$'; then
+        PROGRESS="$LINE"
+    elif printf "%s" "$LINE" | grep -qE '^#'; then
+        MESSAGE=$(printf "%s\n" "$LINE" | sed 's/^#//')
+    fi
+
+    if [ "$PROGRESS" -gt 100 ]; then
+        PROGRESS=100
+    fi
+
+    BAR=$(yes "$CHAR" | head -n $(( PROGRESS / 2 )) 2> /dev/null | tr -d '\n')
+    BLANK=$(yes " " | head -n $(( 50 - PROGRESS / 2 )) 2> /dev/null | tr -d '\n')
+
+    if [ -n "$PROMPT" ] && [ "$PROGRESS" -lt 100 ]; then
+        BAR=$(printf "%s" "$BAR" | sed s/"$CHAR"$/"$PROMPT"/)
+    fi
+
+    printf "\r\033[2A"
+    printf "%s%s\033[K\n" "$TITLE" "$MESSAGE"
+    printf "%s%s %3d%%\n" "$(pcolor "$COLOR" "$BAR")" "$BLANK" "$PROGRESS"
+done

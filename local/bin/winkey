@@ -1,0 +1,18 @@
+#!/bin/sh
+
+MSDM=/sys/firmware/acpi/tables/MSDM
+
+if [ "$(whoami)" != "root" ]; then
+    echo "This script must be run as root."
+    exit 1
+fi
+
+PRODUCT_KEY="$(strings -n 29 "$MSDM" 2> /dev/null |
+               grep -Eo '^[A-Z0-9]{5}(-[A-Z0-9]{5}){4}$')"
+
+if [ -z "$PRODUCT_KEY" ]; then
+    echo "No Windows product key found."
+    exit 1
+fi
+
+echo "Windows Product Key: $PRODUCT_KEY"

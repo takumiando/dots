@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$1" = -r ]; then
+    PIN="$2"
+    printf "%s\n" "$(( (PORT - 1) * 32 + PIN ))"
+else
+    PORT="$1"
+    PIN="$2"
+    printf "%s\n" "$(( (PORT - 1) * 32 + PIN ))"
+fi

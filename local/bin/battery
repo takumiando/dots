@@ -1,0 +1,16 @@
+#!/bin/sh
+
+for BAT in /sys/class/power_supply/BAT*
+do
+    printf "\n"
+    printf "%s:\n" "$BAT"
+    printf "  Model                  %s\n" "$(cat "$BAT"/model_name)"
+    printf "  Manufacturer           %s\n" "$(cat "$BAT"/manufacturer)"
+    printf "  Status                 %s\n" "$(cat "$BAT"/status)"
+    printf "  Percentage             %s%%\n" "$(cat "$BAT"/capacity)"
+    printf "  Design Capacity        %s\n" "$(cat "$BAT"/energy_full_design)"
+    printf "  Fully Charge Capacity  %s\n" "$(cat "$BAT"/energy_full)"
+    AGED_PER="$(printf "scale=2; 100 - 100 * %s / %s\n" "$(cat "$BAT"/energy_full)" "$(cat "$BAT"/energy_full_design)" | bc)"
+    printf "  Aged                   %s%%\n" "$AGED_PER"
+    printf "  Cycle Count            %s\n" "$(cat "$BAT"/cycle_count)"
+done
