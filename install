@@ -5,9 +5,9 @@ cd "$(dirname "$0")" || exit
 for conf in $(exec find -- */ -type f)
 do
     case "$conf" in
-        ./img/*)
+        img/*)
             ;;
-        ./home/*)
+        home/*)
             ln -snfv "$(realpath "$conf")" ~/."$(basename "$conf")"
             ;;
         *)
