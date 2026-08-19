@@ -93,19 +93,19 @@ show_label = false
 show_label = false
 
 [widget.workspaces]
-display = "none"
+show_labels = false
 
 [widget.brightness]
 show_label = false
 
 [widget.ram]
-show_label = false
+show_value = false
 
 [widget.cpu]
-show_label = false
+show_value = false
 
 [widget.temp]
-show_label = false
+show_value = false
 
 [widget.indicator]
 type = "takumi/fcitx5-indicator:indicator"
