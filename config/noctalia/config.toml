@@ -109,3 +109,6 @@ show_value = false
 
 [widget.indicator]
 type = "takumi/fcitx5-indicator:indicator"
+
+[osd]
+position = "bottom_center"
