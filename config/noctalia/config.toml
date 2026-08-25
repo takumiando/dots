@@ -34,9 +34,6 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 [location]
 address = "Sapporo"
 
-[lockscreen]
-blur_intensity = 0.0
-
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
@@ -62,8 +59,8 @@ niri_overview_type_to_launch_enabled = true
 directory = "/home/takumi/Pictures/Wallpapers"
 
 [backdrop]
-enabled = false
-blur_intensity = 0.0
+enabled = true
+blur_intensity = 1.0
 tint_intensity = 0.5
 
 [plugins]
