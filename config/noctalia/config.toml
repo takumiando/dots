@@ -91,6 +91,12 @@ show_label = false
 
 [widget.workspaces]
 show_labels = false
+pill_scale = 0.80
+active_pill_size = 1.0
+empty_color = "outline"
+focused_color = "secondary"
+occupied_color = "primary"
+urgent_color = "primary"
 
 [widget.brightness]
 show_label = false
@@ -107,5 +113,10 @@ show_value = false
 [widget.indicator]
 type = "takumi/fcitx5-indicator:indicator"
 
+[notification]
+border = false
+position = "top_right"
+
 [osd]
+border = false
 position = "bottom_center"
