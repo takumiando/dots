@@ -27,7 +27,7 @@ output "eDP-1" {
 
 cursor {
     xcursor-theme "Adwaita"
-    xcursor-size 24
+    xcursor-size 32
 }
 
 layout {
