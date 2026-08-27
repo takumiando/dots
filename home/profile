@@ -17,29 +17,4 @@ append_path ~/.local/bin
 append_path ~/node_modules/.bin
 append_path ~/bin
 
-case "$(uname)" in
-    Darwin)
-        append_path /opt/homebrew/bin
-        ;;
-
-    Linux)
-        DIST=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2)
-        case $DIST in
-            debian )
-                export DEBEMAIL="t-ando@advaly.co.jp"
-                export DEBFULLNAME="Takumi Ando"
-                ;;
-            arch )
-                ;;
-            * )
-                ;;
-        esac
-        ;;
-esac
-
 export PATH
-
-if [ "$SHELL" = /bin/ash ] && type zsh > /dev/null 2>&1; then
-    zsh
-    exit
-fi
