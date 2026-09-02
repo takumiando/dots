@@ -1,0 +1,30 @@
+#!/bin/sh
+
+PIDFILE="${XDG_RUNTIME_DIR}/gpu-screen-recorder.pid"
+DIR="${HOME}/Videos/Screencasts"
+
+if ! command -v gpu-screen-recorder >/dev/null 2>&1; then
+    echo "gpu-screen-recorder is not available."
+    exit 1
+fi
+
+if [ -f "$PIDFILE" ]; then
+    pid="$(cat "$PIDFILE")"
+
+    if kill -0 "$pid" 2>/dev/null; then
+        kill -INT "$pid"
+    fi
+
+    rm -f "$PIDFILE"
+    exit
+fi
+
+mkdir -p "$DIR"
+
+gpu-screen-recorder \
+    -w portal \
+    -f 60 \
+    -c mp4 \
+    -o "$DIR/$(date +%Y-%m-%d_%H-%M-%S).mp4" &
+
+echo $! > "$PIDFILE"
