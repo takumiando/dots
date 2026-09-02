@@ -1,30 +1,76 @@
 #!/bin/sh
 
-PIDFILE="${XDG_RUNTIME_DIR}/gpu-screen-recorder.pid"
-DIR="${HOME}/Videos/Screencasts"
+set -u
 
-if ! command -v gpu-screen-recorder >/dev/null 2>&1; then
-    echo "gpu-screen-recorder is not available."
-    exit 1
+runtime_dir="${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR is not set}"
+pidfile="$runtime_dir/screen-record.pid"
+lockfile="$runtime_dir/screen-record.lock"
+dir="$HOME/Videos/Screencasts"
+
+is_recorder()
+{
+	candidate=$1
+
+	case "$candidate" in
+		''|*[!0-9]*)
+			return 1
+			;;
+	esac
+
+	kill -0 "$candidate" 2>/dev/null || return 1
+
+	exe=$(readlink "/proc/$candidate/exe" 2>/dev/null) || return 1
+
+	case "$exe" in
+		*/gpu-screen-recorder)
+			return 0
+			;;
+	esac
+
+	return 1
+}
+
+mkdir -p "$dir"
+
+exec 9>"$lockfile"
+flock 9
+
+if [ -f "$pidfile" ]; then
+	pid=$(cat "$pidfile")
+
+	if is_recorder "$pid"; then
+		flock -u 9
+		kill -INT "$pid"
+		exit 0
+	fi
+
+	rm -f "$pidfile"
 fi
 
-if [ -f "$PIDFILE" ]; then
-    pid="$(cat "$PIDFILE")"
-
-    if kill -0 "$pid" 2>/dev/null; then
-        kill -INT "$pid"
-    fi
-
-    rm -f "$PIDFILE"
-    exit
-fi
-
-mkdir -p "$DIR"
+output="$dir/$(date +%Y-%m-%d_%H-%M-%S).mp4"
 
 gpu-screen-recorder \
-    -w portal \
-    -f 60 \
-    -c mp4 \
-    -o "$DIR/$(date +%Y-%m-%d_%H-%M-%S).mp4" &
+	-w portal \
+	-f 60 \
+	-c mp4 \
+	-o "$output" &
 
-echo $! > "$PIDFILE"
+pid=$!
+printf '%s\n' "$pid" >"$pidfile"
+
+cleanup()
+{
+	if [ -f "$pidfile" ]; then
+		current_pid=$(cat "$pidfile")
+
+		if [ "$current_pid" = "$pid" ]; then
+			rm -f "$pidfile"
+		fi
+	fi
+}
+
+trap cleanup 0
+
+flock -u 9
+
+wait "$pid"
