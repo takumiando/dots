@@ -36,7 +36,7 @@ address = "Sapporo"
 
 [lockscreen]
 blur_intensity = 0.0
-transition = [ "fade" ]
+transition = []
 
 [lockscreen_widgets]
 enabled = true
