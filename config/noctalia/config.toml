@@ -148,7 +148,7 @@ widget_order = [
         shadow = false
 
 [shell]
-font_family = "Audiowide"
+font_family = "Inter Tight"
 niri_overview_type_to_launch_enabled = true
 
     [shell.launcher]
