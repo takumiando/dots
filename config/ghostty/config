@@ -25,6 +25,7 @@ focus-follows-mouse = false
 unfocused-split-opacity = 0.6
 link-url = true
 clipboard-paste-protection = false
+copy-on-select = none
 
 bell-features = no-system,no-audio,no-attention,no-title,no-border
 shell-integration = zsh
